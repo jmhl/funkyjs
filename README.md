@@ -8,3 +8,4 @@ Just trying to better understand functional programming in JavaScript.
 + [https://www.youtube.com/watch?v=Uooh0Y9fC_M#t=4876]()
 + [http://www.amazon.com/The-Little-Schemer-4th-Edition/dp/0262560992]()
 + [https://github.com/tjmehta/101/]()
++ [http://www.ruby-doc.org/core-2.1.5/]()
