@@ -1,8 +1,14 @@
 'use strict';
 
+var isNumber = require('./is_number');
+
 module.exports = range;
 
 function range(from, to) {
+  if (!isNumber(from) || !isNumber(to)) {
+    throw new TypeError('Arguments must be numbers');
+  }
+
   if (from > to) {
     return _rangeHighToLow(from, to);
   } else {

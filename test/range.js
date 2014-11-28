@@ -5,6 +5,20 @@ var expect = chai.expect;
 var range = require('../range');
 
 describe('range', function() {
+  it('should throw an error when one or both arguments are not numbers', function() {
+    expect(function() {
+      range('1', 10)
+    }).to.throw(TypeError);
+
+    expect(function() {
+      range(1, '10')
+    }).to.throw(TypeError);
+
+    expect(function() {
+      range('1', '10')
+    }).to.throw(TypeError);
+  });
+
   it('should return a list of numbers (inclusive) from low to high', function() {
     var result = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
