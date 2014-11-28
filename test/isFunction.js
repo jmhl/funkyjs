@@ -13,6 +13,7 @@ describe('detect', function() {
   it('returns false when passed anything but a function', function() {
     expect(isFunction('')).to.be.false;
     expect(isFunction(null)).to.be.false;
+    expect(isFunction(true)).to.be.false;
     expect(isFunction(undefined)).to.be.false;
     expect(isFunction(NaN)).to.be.false;
     expect(isFunction([])).to.be.false;
