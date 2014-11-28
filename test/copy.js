@@ -24,5 +24,23 @@ describe('copy', function() {
 
     expect(copy(obj)).to.deep.equal(result);
   });
+
+  it('should deeply copy an array', function() {
+    var arr = [1, 2, [3, 4]];
+
+    expect(copy(arr)).to.deep.equal(arr);
+  });
+
+  it('should deeply copy an object', function() {
+    var obj = {
+      'one': 1,
+      'two': 2,
+      'three': {
+        'four': 4 
+      }
+    };
+
+    expect(copy(obj)).to.deep.equal(obj);
+  });
 });
 
