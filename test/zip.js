@@ -1,8 +1,9 @@
 'use strict';
 
-var chai = require('chai');
+var chai   = require('chai');
 var expect = chai.expect;
-var zip = require('../zip');
+var funky  = require('../funky');
+var zip    = funky.zip;
 
 describe('zip', function() {
   it('should zip two equal length arrays', function() {

@@ -1,8 +1,9 @@
 'use strict';
 
-var chai = require('chai');
-var expect = chai.expect;
-var isNumber= require('../is_number');
+var chai     = require('chai');
+var expect   = chai.expect;
+var funky    = require('../funky');
+var isNumber = funky.isNumber;
 
 describe('isNumber', function() {
   it('returns true when given a number', function() {

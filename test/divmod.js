@@ -1,8 +1,9 @@
 'use strict';
 
-var chai = require('chai');
+var chai   = require('chai');
 var expect = chai.expect;
-var divmod = require('../divmod');
+var funky  = require('../funky');
+var divmod = funky.divmod; 
 
 describe('divmod', function() {
   it('should return an array of quotient and modulus', function() {

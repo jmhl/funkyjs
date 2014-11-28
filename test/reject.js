@@ -1,8 +1,9 @@
 'use strict';
 
-var chai = require('chai');
+var chai   = require('chai');
 var expect = chai.expect;
-var reject = require('../reject');
+var funky  = require('../funky');
+var reject = funky.reject;
 
 describe('reject', function() {
   it('should throw an error when not given a list', function() {

@@ -1,8 +1,9 @@
 'use strict';
 
-var chai = require('chai');
-var expect = chai.expect;
-var isObject = require('../is_object');
+var chai     = require('chai');
+var expect   = chai.expect;
+var funky    = require('../funky');
+var isObject = funky.isObject;
 
 describe('isObject', function() {
   it('returns true when the object is an object literal', function() {

@@ -1,8 +1,9 @@
 'use strict';
 
-var chai = require('chai');
+var chai   = require('chai');
 var expect = chai.expect;
-var curry = require('../curry');
+var funky  = require('../funky');
+var curry  = funky.curry; 
 
 describe('curry', function() {
   it('should throw an error when given no arguments', function() {

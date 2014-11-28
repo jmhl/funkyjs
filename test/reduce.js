@@ -1,8 +1,9 @@
 'use strict';
 
-var chai = require('chai');
+var chai   = require('chai');
 var expect = chai.expect;
-var reduce = require('../reduce');
+var funky  = require('../funky');
+var reduce = funky.reduce;
 
 describe('reduce', function() {
   it('should reduce an array of numbers', function() {

@@ -1,8 +1,9 @@
 'use strict';
 
-var chai = require('chai');
+var chai   = require('chai');
 var expect = chai.expect;
-var pick = require('../pick');
+var funky  = require('../funky');
+var pick   = funky.pick;
 
 describe('pick', function() {
   it('throws an error if not passed an object', function() {

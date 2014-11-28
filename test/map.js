@@ -1,8 +1,9 @@
 'use strict';
 
-var chai = require('chai');
+var chai   = require('chai');
 var expect = chai.expect;
-var map = require('../map');
+var funky  = require('../funky');
+var map    = funky.map;
 
 describe('map', function() {
   it('throws an error if called on an incompatible type', function() {

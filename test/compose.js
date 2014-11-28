@@ -2,7 +2,8 @@
 
 var chai = require('chai');
 var expect = chai.expect;
-var compose = require('../compose');
+var funky = require('../funky');
+var compose = funky.compose; 
 
 describe('compose', function() {
   it('should call functions in order', function() {

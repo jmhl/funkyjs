@@ -1,8 +1,9 @@
 'use strict';
 
-var chai = require('chai');
+var chai   = require('chai');
 var expect = chai.expect;
-var filter = require('../filter');
+var funky  = require('../funky');
+var filter = funky.filter; 
 
 describe('filter', function() {
   it('should throw an error when not given a list', function() {

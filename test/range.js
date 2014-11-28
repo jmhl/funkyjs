@@ -1,8 +1,9 @@
 'use strict';
 
-var chai = require('chai');
+var chai   = require('chai');
 var expect = chai.expect;
-var range = require('../range');
+var funky  = require('../funky');
+var range  = funky.range;
 
 describe('range', function() {
   it('should throw an error when one or both arguments are not numbers', function() {

@@ -1,8 +1,9 @@
 'use strict';
 
-var chai = require('chai');
-var expect = chai.expect;
-var isFunction = require('../is_function');
+var chai       = require('chai');
+var expect     = chai.expect;
+var funky      = require('../funky');
+var isFunction = funky.isFunction; 
 
 describe('detect', function() {
   it('returns true when passed a function', function() {

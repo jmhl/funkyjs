@@ -1,8 +1,9 @@
 'use strict';
 
-var chai = require('chai');
+var chai   = require('chai');
 var expect = chai.expect;
-var drop = require('../drop');
+var funky  = require('../funky');
+var drop   = funky.drop; 
 
 describe('drop', function() {
   it('throws an error when not used with an array', function() {

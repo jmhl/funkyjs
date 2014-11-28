@@ -1,8 +1,9 @@
 'use strict';
 
-var chai = require('chai');
+var chai   = require('chai');
 var expect = chai.expect;
-var last = require('../last');
+var funky  = require('../funky');
+var last   = funky.last;
 
 describe('last', function() {
   it('returns the first item from an array', function() {

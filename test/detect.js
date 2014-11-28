@@ -1,8 +1,9 @@
 'use strict';
 
-var chai = require('chai');
+var chai   = require('chai');
 var expect = chai.expect;
-var detect = require('../detect');
+var funky  = require('../funky');
+var detect = funky.detect; 
 
 describe('detect', function() {
   it('will detect and return the first even item', function() {

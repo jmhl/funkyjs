@@ -1,8 +1,9 @@
 'use strict';
 
-var chai = require('chai');
-var expect = chai.expect;
-var compact = require('../compact');
+var chai    = require('chai');
+var expect  = chai.expect;
+var funky   = require('../funky');
+var compact = funky.compact;
 
 describe('compact', function() {
   it('throws an error if passed anything other than an array or object', function() {

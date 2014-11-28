@@ -1,8 +1,9 @@
 'use strict';
 
-var chai = require('chai');
-var expect = chai.expect;
-var flatten = require('../flatten');
+var chai    = require('chai');
+var expect  = chai.expect;
+var funky   = require('../funky');
+var flatten = funky.flatten; 
 
 describe('flatten', function() {
   it('should throw an error when not given a list', function() {
