@@ -4,35 +4,37 @@ var chai   = require('chai');
 var expect = chai.expect;
 var funky  = require('../funky');
 var tap    = funky.tap;
-var divmod = funky.divmod;
+var square = funky.square;
 
 describe('tap', function() {
   it('should tap into the control flow', function() {
     var tapped;
-    var tappedResult = [3, 2];
+    var tappedResult = 121;
 
-    tap(tapped = divmod(a, 3), 11);
+    tap(function(a) {
+      tapped = square(a);
+    }, 11);
     
     expect(tapped).to.deep.equal(tappedResult);
   });
 
   it('should return the argument back into the flow', function() {
-    var result = tap(divmod(a, 3), 11);
+    var result = tap(function(a) {
+      square(a)
+    }, 11);
     
     expect(result).to.equal(11);
   });
 
-  // it('should curry the function', function() {
-  //   var tapped;
-  //   var tappedResult = [3, 2];
-  //
-  //   var tapDivmod = tap(function(a) {
-  //
-  //   var result = tap(function(a) {
-  //     tapped = divmod(a, 3);
-  //   }, 11);
-  //   
-  //   expect(tapped).to.deep.equal(tappedResult);
-  //   expect(result).to.equal(11);
-  // });
+  it('should curry the function', function() {
+    var tapped;
+    var tappedResult = 121;
+    var tapSquare = tap(function(a) {
+      tapped = square(a);
+    });
+    var result = tapSquare(11);
+
+    expect(tapped).to.deep.equal(tappedResult);
+    expect(result).to.equal(11);
+  });
 });
