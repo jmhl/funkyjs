@@ -11,18 +11,28 @@ describe('tap', function() {
     var tapped;
     var tappedResult = [3, 2];
 
-    tap(function(a) {
-      tapped = divmod(a, 3);
-    }, 11);
+    tap(tapped = divmod(a, 3), 11);
     
     expect(tapped).to.deep.equal(tappedResult);
   });
 
   it('should return the argument back into the flow', function() {
-    var result = tap(function(a) {
-      divmod(a, 3);
-    }, 11);
+    var result = tap(divmod(a, 3), 11);
     
     expect(result).to.equal(11);
   });
+
+  // it('should curry the function', function() {
+  //   var tapped;
+  //   var tappedResult = [3, 2];
+  //
+  //   var tapDivmod = tap(function(a) {
+  //
+  //   var result = tap(function(a) {
+  //     tapped = divmod(a, 3);
+  //   }, 11);
+  //   
+  //   expect(tapped).to.deep.equal(tappedResult);
+  //   expect(result).to.equal(11);
+  // });
 });
