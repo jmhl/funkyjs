@@ -28,7 +28,6 @@ describe('detect', function() {
   });
 });
 
-
 function isEven(item) {
   return item % 2 === 0;
 }
