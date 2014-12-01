@@ -17,7 +17,7 @@ describe('map', function() {
   it('should map an array', function() {
     var arr = [1, 2, 3];
     var cb = function(x) { return x + 1; };
-    var mapped = map(arr, cb);
+    var mapped = map(cb, arr);
 
     expect(mapped).to.deep.equal([2, 3, 4]);
   });
@@ -25,7 +25,7 @@ describe('map', function() {
   it('points to a different place in memory', function() {
     var arr = [1, 2, 3];
     var cb = function(x) { return x + 1; };
-    var mapped = map(arr, cb);
+    var mapped = map(cb, arr);
     arr[0] = 4;
 
     expect(mapped).to.deep.equal([2, 3, 4]);
@@ -34,7 +34,7 @@ describe('map', function() {
   it('should map an object', function() {
     var obj = { 'one': 1, 'two': 2 };
     var cb = function(x) { return x * 2; };
-    var mapped = map(obj, cb);
+    var mapped = map(cb, obj);
     var result = { 'one': 2, 'two': 4 };
 
     expect(mapped).to.deep.equal(result);
