@@ -1,19 +1,17 @@
 'use strict';
 
-var funky  = require('../funky');
-var filter = funky.filter; 
+var funky   = require('../funky');
+var compose = funky.compose; 
+var square  = funky.square;
+var mult    = funky.mult;
 
-var nums = [8, 2, 85, 2, 34, 3, 23, 247, 57, 8, 0, 6, 5, 46, 54, 643];
-
-function isEven (num) {
-  return num % 2 === 0;
-}
+var double = mult(2);
 
 module.exports = {
-  name: 'filter',
+  name: 'compose',
   maxTime: 2,
   fn: function() {
-    filter(isEven, nums);
+    compose(double, square)(2);
   }
 };
 
