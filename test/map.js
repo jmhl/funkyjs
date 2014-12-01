@@ -4,6 +4,7 @@ var chai   = require('chai');
 var expect = chai.expect;
 var funky  = require('../funky');
 var map    = funky.map;
+var square = funky.square;
 
 describe('map', function() {
   it('throws an error if called on an incompatible type', function() {
@@ -38,5 +39,12 @@ describe('map', function() {
     var result = { 'one': 2, 'two': 4 };
 
     expect(mapped).to.deep.equal(result);
+  });
+
+  it('should curry the function', function() {
+    var arr = [2, 3, 4];
+    var mapSquares = map(square);
+
+    expect(mapSquares(arr)).to.deep.equal([4, 9, 16]);
   });
 });
