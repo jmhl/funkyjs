@@ -1,0 +1,25 @@
+[
+  {
+    "name": "filter",
+    "timestamp": "Sun Nov 30 2014 18:55:56 GMT-0800 (PST)",
+    "count": 269962,
+    "cycles": 5,
+    "hz": 5234590.250396068
+  },
+  {
+    "name": "map array",
+    "timestamp": "Sun Nov 30 2014 18:56:01 GMT-0800 (PST)",
+    "count": 28019,
+    "cycles": 5,
+    "hz": 549223.1881694203,
+    "suite": "map"
+  },
+  {
+    "name": "map obj",
+    "timestamp": "Sun Nov 30 2014 18:56:07 GMT-0800 (PST)",
+    "count": 14143,
+    "cycles": 4,
+    "hz": 272614.54652625584,
+    "suite": "map"
+  }
+]
