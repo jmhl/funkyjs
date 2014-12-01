@@ -14,4 +14,3 @@ module.exports = {
     compose(double, square)(2);
   }
 };
-

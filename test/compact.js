@@ -38,7 +38,7 @@ describe('compact', function() {
       'three': 3,
       'a': 'a',
       'b': 'b'
-    }
+    };
 
     expect(compact(obj)).to.deep.equal(result);
   });
