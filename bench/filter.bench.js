@@ -11,6 +11,7 @@ function isEven (num) {
 
 module.exports = {
   name: 'filter',
+  maxTime: 2,
   fn: function() {
     filter(isEven, nums);
   }

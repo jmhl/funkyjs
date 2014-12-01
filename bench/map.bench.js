@@ -28,12 +28,14 @@ module.exports = {
   tests: [
     {
       name: 'map array',
+      maxTime: 2,
       fn: function() {
         map(square, nums);
       }
     },
     {
       name: 'map obj',
+      maxTime: 2,
       fn: function() {
         map(square, numsObj);
       }
