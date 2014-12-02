@@ -4,6 +4,7 @@ var chai   = require('chai');
 var expect = chai.expect;
 var funky  = require('../funky');
 var reject = funky.reject;
+var isEven = funky.isEven;
 
 describe('reject', function() {
   it('should throw an error when not given a list', function() {
@@ -28,8 +29,3 @@ describe('reject', function() {
 
   });
 });
-
-function isEven(x) {
-  return x % 2 === 0;
-}
-
