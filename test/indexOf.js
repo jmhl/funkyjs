@@ -26,4 +26,10 @@ describe('groupBy', function() {
 
     expect(indexOf(arr, 5)).to.be.null();
   });
+
+  it('should return the index when searching from a particular index', function() {
+    var arr = [1, 2, 3, 1, 2, 3];
+
+    expect(indexOf(arr, 2, 3)).to.equal(4);
+  });
 });
