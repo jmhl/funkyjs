@@ -5,10 +5,7 @@ var expect  = chai.expect;
 var funky   = require('../funky');
 var indexOf = funky.indexOf;
 
-describe('groupBy', function() {
-  var students;
-  var result;
-
+describe('indexOf', function() {
   it('should throw an error when given an incompatible type', function() {
     expect(function() {
       indexOf({}, 2);
