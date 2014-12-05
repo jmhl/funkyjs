@@ -23,7 +23,7 @@ describe('groupBy', function() {
     };
   });
 
-  it('should group a list by the given function', function() {
+  it('should throw an error when given an incompatible type', function() {
     expect(function() {
       groupBy(grade, {})
     }).to.throw(TypeError);
