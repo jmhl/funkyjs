@@ -16,7 +16,6 @@ describe('compose', function() {
   });
 });
 
-
 function double(x) {
   return x * 2;
 }
