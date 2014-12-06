@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: div.js</title>
+    <title>JSDoc: Source: keys.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: div.js</h1>
+    <h1 class="page-title">Source: keys.js</h1>
 
     
 
@@ -28,23 +28,36 @@
         <article>
             <pre class="prettyprint source linenums"><code>'use strict';
 
-module.exports = div;
+var isObject = require('./isObject');
+
+module.exports = keys;
 
 /**
- * Divides two numbers.
+ * Provides an array of the keys from an object.
  *
- * @param {number} a The number to be divided.
- * @param {number} b The divisor.
- *
- * @returns {number} The result of the division.
+ * @param {object} obj
+ * 
+ * @returns {array} An array of all the keys in the object.
  *
  * @example
- * div(4, 2);
- * // returns 2
+ * var obj = { 'one': 1, 'two': 2 };
+ *
+ * keys(obj);
+ * // returns ['one', 'two']
  */
 
-function div(a, b) {
-  return a / b;
+function keys(obj) {
+  if (!isObject(obj)) {
+    throw new TypeError('Keys must be used with an object');
+  }
+
+  var result = [];
+
+  for (var key in obj) {
+    result.push(key);
+  }
+
+  return result;
 }
 </code></pre>
         </article>

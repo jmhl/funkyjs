@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: div.js</title>
+    <title>JSDoc: Source: first.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: div.js</h1>
+    <h1 class="page-title">Source: first.js</h1>
 
     
 
@@ -28,23 +28,24 @@
         <article>
             <pre class="prettyprint source linenums"><code>'use strict';
 
-module.exports = div;
+module.exports = first;
 
 /**
- * Divides two numbers.
+ * Returns the first element from an array.
  *
- * @param {number} a The number to be divided.
- * @param {number} b The divisor.
+ * @param {array} arr
  *
- * @returns {number} The result of the division.
+ * @returns {var} The first element in the array.
  *
  * @example
- * div(4, 2);
- * // returns 2
+ * var arr = [1, 2, 3];
+ *
+ * first(arr);
+ * // returns 1
  */
 
-function div(a, b) {
-  return a / b;
+function first(arr) {
+  return arr[0];
 }
 </code></pre>
         </article>

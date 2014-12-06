@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: div.js</title>
+    <title>JSDoc: Source: filter.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: div.js</h1>
+    <h1 class="page-title">Source: filter.js</h1>
 
     
 
@@ -28,23 +28,60 @@
         <article>
             <pre class="prettyprint source linenums"><code>'use strict';
 
-module.exports = div;
+var curry   = require('./curry');
+var isArray = require('./isArray');
+
+module.exports = filter;
 
 /**
- * Divides two numbers.
+ * Filters the list based on a given condition.
  *
- * @param {number} a The number to be divided.
- * @param {number} b The divisor.
+ * This function can be curried.
  *
- * @returns {number} The result of the division.
+ * @param {function} condition The function that is used to filter the array.
+ * @param {array} list The array to filter.
  *
  * @example
- * div(4, 2);
- * // returns 2
+ * function isEven(num) {
+ *   return num % 2 === 0;
+ * }
+ *
+ * var nums = [2, 3, 4, 5, 6, 7, 8];
+ *
+ * filter(isEven, nums);
+ * // returns [2, 4, 6, 8]
+ *
+ * @example
+ * var nums = [2, 3, 4, 5, 6, 7, 8];
+ * var filterEvens = filter(isEven);
+ *
+ * filterEvens(nums);
+ * // returns [2, 4, 6, 8]
  */
 
-function div(a, b) {
-  return a / b;
+function filter(condition, list) {
+  var argsLen = arguments.length;
+
+  if (!isArray(list) &amp;&amp; argsLen > 1) {
+    throw new TypeError('Filter must be used with a list');
+  }
+
+  if (!isArray(condition) &amp;&amp; argsLen &lt; 2) {
+    return curry(filter)(condition);
+  }
+
+  var len = list.length;
+  var result = [];
+
+  for (var i = 0; i &lt; len; i += 1) {
+    var item = list[i];
+
+    if (condition(item)) {
+      result.push(item);
+    }
+  }
+
+  return result;
 }
 </code></pre>
         </article>

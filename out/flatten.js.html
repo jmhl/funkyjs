@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: div.js</title>
+    <title>JSDoc: Source: flatten.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: div.js</h1>
+    <h1 class="page-title">Source: flatten.js</h1>
 
     
 
@@ -28,23 +28,39 @@
         <article>
             <pre class="prettyprint source linenums"><code>'use strict';
 
-module.exports = div;
+var isArray = require('./isArray');
+var reduce  = require('./reduce');
+
+module.exports = flatten;
 
 /**
- * Divides two numbers.
+ * Flattens the array recursively. Handles deeply nested arrays.
  *
- * @param {number} a The number to be divided.
- * @param {number} b The divisor.
+ * @param {array} list The list flatten
  *
- * @returns {number} The result of the division.
+ * @returns {array} An array of all the values within the array.
  *
  * @example
- * div(4, 2);
- * // returns 2
+ * var arr = [1, 2, [3, 4], 5, [6, [7, 8]]];
+ *
+ * flatten(arr);
+ * // returns [1, 2, 3, 4, 5, 6, 7, 8]
  */
 
-function div(a, b) {
-  return a / b;
+function flatten(list) {
+  if (!isArray(list)) {
+    throw new TypeError('Flatten must be used with an array');
+  }
+
+  return reduce(_flatten, [], list);
+}
+
+function _flatten(a, b) {
+  if (isArray(b)) {
+    b = flatten(b);
+  }
+
+  return a.concat(b);
 }
 </code></pre>
         </article>
