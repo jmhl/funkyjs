@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: divmod.js</title>
+    <title>JSDoc: Source: inject.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: divmod.js</h1>
+    <h1 class="page-title">Source: inject.js</h1>
 
     
 
@@ -28,35 +28,62 @@
         <article>
             <pre class="prettyprint source linenums"><code>'use strict';
 
-module.exports = divmod;
+var copy     = require('./copy');
+var curry    = require('./curry');
+var isArray  = require('./isArray');
+var reduce   = require('./reduce');
+var add      = require('./add');
+var mult     = require('./mult');
+var subtract = require('./subtract');
+var div      = require('./div');
+
+module.exports = inject;
 
 /**
- * Similar to Ruby's divmod function (http://www.ruby-doc.org/core-2.1.5/Numeric.html#method-i-divmod). First divides and then takes the modulus of the number.
+ * Simulates the Ruby inject shortcut (http://ruby-doc.org/core-2.1.5/Enumerable.html#method-i-inject, [].inject(:+)). Performs a mathematical operation on each value in the array.
  *
- * @param {number} dividend
- * @param {number} divisor
+ * @param {string} operand Can be one of: +, *, -, /
+ * @param {array} list
  *
- * @returns {array} An array that includes both the quotient and modulus.
- *
- * @example
- * divmod(11, 3);
- * // [3, 2]
+ * @returns {number} The result from performing all the operations on the array.
  *
  * @example
- * divmod(11, 3.5);
- * // [3, 0.5]
+ * var arr = [1, 2, 3];
+ *
+ * inject('+', arr);
+ * // returns 6
  */
 
-function divmod(dividend, divisor) {
-  var result = [];
+// inspired by the Ruby inject shortcut: [].inject(:+)
+function inject(operand, list) {
+  var listIsArray = isArray(list);
 
-  var quotient = Math.floor(dividend / divisor);
-  var modulus = dividend - (divisor * quotient);
+  if (arguments.length === 1 &amp;&amp; !listIsArray) {
+    return curry(inject)(operand);
+  }
 
-  result.push(quotient);
-  result.push(modulus);
+  if (!listIsArray) {
+    throw new TypeError('Inject must be passed an array');
+  }
+  
+  var base = list[0]; 
+  var newList = [];
+  var len = list.length;
 
-  return result;
+  for (var i = 1; i &lt; len; i += 1) {
+    newList.push(list[i]);
+  }
+
+  switch (operand) {
+    case '+':
+      return reduce(add, base, newList); 
+    case '-':
+      return reduce(subtract, base, newList); 
+    case '*':
+      return reduce(mult, base, newList); 
+    case '/':
+      return reduce(div, base, newList); 
+  }
 }
 </code></pre>
         </article>

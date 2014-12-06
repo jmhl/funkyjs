@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: divmod.js</title>
+    <title>JSDoc: Source: last.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: divmod.js</h1>
+    <h1 class="page-title">Source: last.js</h1>
 
     
 
@@ -28,36 +28,26 @@
         <article>
             <pre class="prettyprint source linenums"><code>'use strict';
 
-module.exports = divmod;
+module.exports = last;
 
 /**
- * Similar to Ruby's divmod function (http://www.ruby-doc.org/core-2.1.5/Numeric.html#method-i-divmod). First divides and then takes the modulus of the number.
+ * Retrieves the last value from an array.
  *
- * @param {number} dividend
- * @param {number} divisor
+ * @param {array} arr
  *
- * @returns {array} An array that includes both the quotient and modulus.
- *
- * @example
- * divmod(11, 3);
- * // [3, 2]
+ * @returns {var} The last value in the array.
  *
  * @example
- * divmod(11, 3.5);
- * // [3, 0.5]
+ * var arr = [1, 2, 3];
+ *
+ * last(arr);
+ * // 3
  */
 
-function divmod(dividend, divisor) {
-  var result = [];
-
-  var quotient = Math.floor(dividend / divisor);
-  var modulus = dividend - (divisor * quotient);
-
-  result.push(quotient);
-  result.push(modulus);
-
-  return result;
+function last(arr) {
+  return arr[arr.length - 1];
 }
+
 </code></pre>
         </article>
     </section>

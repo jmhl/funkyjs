@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: divmod.js</title>
+    <title>JSDoc: Source: max.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: divmod.js</h1>
+    <h1 class="page-title">Source: max.js</h1>
 
     
 
@@ -28,35 +28,50 @@
         <article>
             <pre class="prettyprint source linenums"><code>'use strict';
 
-module.exports = divmod;
+var isArray  = require('./isArray');
+var isNumber = require('./isNumber');
+
+module.exports = max;
 
 /**
- * Similar to Ruby's divmod function (http://www.ruby-doc.org/core-2.1.5/Numeric.html#method-i-divmod). First divides and then takes the modulus of the number.
+ * Returns the largest value. Can return either the largest of two values, or the largest number in an array.
  *
- * @param {number} dividend
- * @param {number} divisor
+ * @param {number} a First argument can be a number.
+ * @param {array} a First argument can be an array.
+ * @param {number} b (optional) The second number to compare.
  *
- * @returns {array} An array that includes both the quotient and modulus.
- *
- * @example
- * divmod(11, 3);
- * // [3, 2]
+ * @returns {number} Returns either the largest number from the array, or the largest of the two numbers passed in as arguments.
  *
  * @example
- * divmod(11, 3.5);
- * // [3, 0.5]
+ * max(2, 4);
+ * // returns 4
+ *
+ * @example
+ * var arr = [1, 2, 3];
+ *
+ * max(arr);
+ * // returns 3
  */
 
-function divmod(dividend, divisor) {
-  var result = [];
+function max(a, b) {
+  if (isNumber(a) &amp;&amp; isNumber(b)) {
+    return a > b
+      ? a
+      : b
+  } else if (isArray(a, b)) {
+    return _maxArray(a); 
+  }
+}
 
-  var quotient = Math.floor(dividend / divisor);
-  var modulus = dividend - (divisor * quotient);
+function _maxArray(arr) {
+  var largest = arr[0];
+  var len = arr.length;
 
-  result.push(quotient);
-  result.push(modulus);
+  for (var i = 0; i &lt; len; i += 1) {
+    largest = arr[i] > largest ? arr[i] : largest;
+  }
 
-  return result;
+  return largest;
 }
 </code></pre>
         </article>
