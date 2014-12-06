@@ -7,6 +7,9 @@ var drop   = funky.drop;
 
 describe('drop', function() {
   it('throws an error when not used with an array', function() {
+    expect(function() {
+      drop(2, {});
+    }).to.throw(TypeError);
   });
 
   it('drops the first n elements from an array', function() {

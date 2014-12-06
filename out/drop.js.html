@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: allAs.js</title>
+    <title>JSDoc: Source: drop.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: allAs.js</h1>
+    <h1 class="page-title">Source: drop.js</h1>
 
     
 
@@ -28,54 +28,55 @@
         <article>
             <pre class="prettyprint source linenums"><code>'use strict';
 
-var curry   = require('./curry');
-var isArray = require('./isArray');
+var curry    = require('./curry');
+var isArray  = require('./isArray');
+var isNumber = require('./isNumber');
 
-module.exports = allAs;
+module.exports = drop;
 
 /**
- * Checks if a value is true for a given predicate, or list of predicates.
+ * Drops a specified number of elements from an array.
  *
  * This function can be curried.
  *
- * @param {array} predicates An array of predicates (functions). Even if there is only one predicate you want to match, it must be passed into the function in array form.
- * @param {var} test 
+ * @param {number} num The number of elements to be dropped from the array.
+ * @param {array} arr
  *
- * @returns {boolean} Returns true if all predicates are satisfied, false otherwise.
- *
- * @example
- * function isEven(num) {
- *   return num % 2 === 0; 
- * }
- *
- * function isLarge(num) {
- *   return num > 10;
- * }
- *
- * allAs([isEven, isLarge], 2);
- * // returns true
+ * @returns {array} Returns a new array minus the number (num) of elements from the array.
  *
  * @example
- * var isEvenAndLarge = allAs([isEven, isLarge]);
+ * var arr = [1, 2, 3, 4, 5, 6];
  *
- * isEvenAndLarge(2);
- * // returns false
+ * drop(2, arr);
+ * // returns [3, 4, 5, 6]
+ *
+ * @example
+ * var arr = [1, 2, 3, 4, 5, 6];
+ * var dropTwo = drop(2);
+ *
+ * dropTwo(arr);
+ * // returns [3, 4, 5, 6]
  */
 
-function allAs(predicates, test) {
-  if (arguments.length === 1 &amp;&amp; isArray(predicates)) {
-    return curry(allAs)(predicates);
+function drop(num, arr) {
+  var argsLen = arguments.length;
+
+  if (argsLen > 1 &amp;&amp; !isArray(arr)) {
+    throw new TypeError('Drop must be passed an array');
   }
 
-  var len = predicates.length;
-
-  for (var i = 0; i &lt; len; i += 1) {
-    if (!predicates[i](test)) {
-      return false;
-    }
+  if (argsLen === 1 &amp;&amp; isNumber(num)) {
+    return curry(drop)(num);
   }
 
-  return true;
+  var len = arr.length;
+  var result = new Array(len - num);
+
+  for(var i = num; i &lt; len; i += 1) {
+    result[i - num] = arr[i];
+  }
+
+  return result;
 }
 </code></pre>
         </article>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: allAs.js</title>
+    <title>JSDoc: Source: divmod.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: allAs.js</h1>
+    <h1 class="page-title">Source: divmod.js</h1>
 
     
 
@@ -28,54 +28,35 @@
         <article>
             <pre class="prettyprint source linenums"><code>'use strict';
 
-var curry   = require('./curry');
-var isArray = require('./isArray');
-
-module.exports = allAs;
+module.exports = divmod;
 
 /**
- * Checks if a value is true for a given predicate, or list of predicates.
+ * Similar to Ruby's divmod function (http://www.ruby-doc.org/core-2.1.5/Numeric.html#method-i-divmod). First divides and then takes the modulus of the number.
  *
- * This function can be curried.
+ * @param {number} dividend
+ * @param {number} divisor
  *
- * @param {array} predicates An array of predicates (functions). Even if there is only one predicate you want to match, it must be passed into the function in array form.
- * @param {var} test 
- *
- * @returns {boolean} Returns true if all predicates are satisfied, false otherwise.
+ * @returns {array} An array that includes both the quotient and modulus.
  *
  * @example
- * function isEven(num) {
- *   return num % 2 === 0; 
- * }
- *
- * function isLarge(num) {
- *   return num > 10;
- * }
- *
- * allAs([isEven, isLarge], 2);
- * // returns true
+ * divmod(11, 3);
+ * // [3, 2]
  *
  * @example
- * var isEvenAndLarge = allAs([isEven, isLarge]);
- *
- * isEvenAndLarge(2);
- * // returns false
+ * divmod(11, 3.5);
+ * // [3, 0.5]
  */
 
-function allAs(predicates, test) {
-  if (arguments.length === 1 &amp;&amp; isArray(predicates)) {
-    return curry(allAs)(predicates);
-  }
+function divmod(dividend, divisor) {
+  var result = [];
 
-  var len = predicates.length;
+  var quotient = Math.floor(dividend / divisor);
+  var modulus = dividend - (divisor * quotient);
 
-  for (var i = 0; i &lt; len; i += 1) {
-    if (!predicates[i](test)) {
-      return false;
-    }
-  }
+  result.push(quotient);
+  result.push(modulus);
 
-  return true;
+  return result;
 }
 </code></pre>
         </article>

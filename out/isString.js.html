@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: allAs.js</title>
+    <title>JSDoc: Source: isString.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: allAs.js</h1>
+    <h1 class="page-title">Source: isString.js</h1>
 
     
 
@@ -28,54 +28,22 @@
         <article>
             <pre class="prettyprint source linenums"><code>'use strict';
 
-var curry   = require('./curry');
-var isArray = require('./isArray');
-
-module.exports = allAs;
+module.exports = isString;
 
 /**
- * Checks if a value is true for a given predicate, or list of predicates.
+ * Detects whether the argument is a string.
  *
- * This function can be curried.
+ * @param {var} str The element to be tested.
  *
- * @param {array} predicates An array of predicates (functions). Even if there is only one predicate you want to match, it must be passed into the function in array form.
- * @param {var} test 
- *
- * @returns {boolean} Returns true if all predicates are satisfied, false otherwise.
+ * @returns {boolean} Returns true if the element is a string, returns false otherwise. 
  *
  * @example
- * function isEven(num) {
- *   return num % 2 === 0; 
- * }
- *
- * function isLarge(num) {
- *   return num > 10;
- * }
- *
- * allAs([isEven, isLarge], 2);
- * // returns true
- *
- * @example
- * var isEvenAndLarge = allAs([isEven, isLarge]);
- *
- * isEvenAndLarge(2);
- * // returns false
+ * isString('');
+ * // true
  */
 
-function allAs(predicates, test) {
-  if (arguments.length === 1 &amp;&amp; isArray(predicates)) {
-    return curry(allAs)(predicates);
-  }
-
-  var len = predicates.length;
-
-  for (var i = 0; i &lt; len; i += 1) {
-    if (!predicates[i](test)) {
-      return false;
-    }
-  }
-
-  return true;
+function isString(str) {
+  return typeof str === 'string';
 }
 </code></pre>
         </article>
