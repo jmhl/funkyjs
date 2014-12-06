@@ -6,7 +6,7 @@ var funky  = require('../funky');
 var split  = funky.split; 
 
 describe('split', function() {
-  it('should split the string ', function() {
+  it('should split the string', function() {
     var str = 'hello there';
     var res = ['hello', 'there'];
 
