@@ -23,8 +23,8 @@ describe('curry', function() {
       return a + b;
     };
 
-    var addTwo = curry(add);
+    var addTwo = curry(add)(2);
 
-    expect(addTwo(1, 2)).to.equal(3);
+    expect(addTwo(1)).to.equal(3);
   });
 });
