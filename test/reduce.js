@@ -4,6 +4,7 @@ var chai   = require('chai');
 var expect = chai.expect;
 var funky  = require('../funky');
 var reduce = funky.reduce;
+var add    = funky.add;
 
 describe('reduce', function() {
   it('should reduce an array of numbers', function() {
@@ -18,7 +19,3 @@ describe('reduce', function() {
     expect(reduce(add, '', letters)).to.equal('abc');
   });
 });
-
-function add(a, b) {
-  return a + b;
-}

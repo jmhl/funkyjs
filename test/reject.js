@@ -26,6 +26,5 @@ describe('reject', function() {
     var rejectEvens = reject(isEven);
 
     expect(rejectEvens(nums)).to.deep.equal(result);
-
   });
 });
