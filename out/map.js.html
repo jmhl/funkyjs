@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: map.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: map.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>'use strict';
+
+var curry      = require('./curry');
+var isArray    = require('./isArray');
+var isFunction = require('./isFunction');
+var isObject   = require('./isObject');
+
+module.exports = map;
+
+/**
+ * Iterates over an array or object, calls a given function on each item and then returns a new array or object with the results of each function call.
+ *
+ * This function can be curried.
+ *
+ * @param {function} fn The function to be called on each item.
+ * @param {array/object} iterable The list to be mapped.
+ *
+ * @returns {array/object} The mapped list.
+ *
+ * @example
+ * function square(a) {
+ *   return a * a;
+ * }
+ *
+ * var arr = [1, 2, 3];
+ *
+ * map(square, arr);
+ *
+ * // returns [1, 4, 9]
+ * // Also note that arr === [1, 2, 3]
+ *
+ * @example
+ * var obj = { 'one': 1, 'two': 2 };
+ *
+ * map(square, obj);
+ * // returns { 'one': 1, 'two': 4 }
+ * // Also note that obj === { 'one': 1, 'two': 2}
+ *
+ * @example
+ * var arr = [2, 3, 4];
+ * var mapSquares = map(square);
+ *
+ * mapSquares(arr);
+ * // returns [4, 9, 16]
+ * // Also note that arr === [2, 3, 4]
+ */
+
+function map(fn, iterable) {
+  if (isArray(iterable)) {
+    var len = iterable.length;
+    var result = new Array(len);
+
+    for (var i = 0; i &lt; len; i += 1) {
+      result[i] = fn(iterable[i]);
+    }
+  } else if (isObject(iterable)) {
+    var result = {};
+    var objKeys = Object.keys(iterable);
+    var len = objKeys.length;
+
+    for (var i = 0; i &lt; len; i += 1) {
+      var key = objKeys[i];
+      result[key] = fn(iterable[key]);
+    }
+  } else if (arguments.length === 1 &amp;&amp; isFunction(fn)) {
+    return curry(map)(fn);
+  } else {
+    throw new TypeError('Must be of type Array or Object');
+  }
+
+  return result;
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Index</a></h2><h3>Global</h3><ul><li><a href="global.html#add">add</a></li><li><a href="global.html#allAs">allAs</a></li><li><a href="global.html#compact">compact</a></li><li><a href="global.html#compare">compare</a></li><li><a href="global.html#compose">compose</a></li><li><a href="global.html#copy">copy</a></li><li><a href="global.html#count">count</a></li><li><a href="global.html#curry">curry</a></li><li><a href="global.html#detect">detect</a></li><li><a href="global.html#div">div</a></li><li><a href="global.html#divmod">divmod</a></li><li><a href="global.html#drop">drop</a></li><li><a href="global.html#filter">filter</a></li><li><a href="global.html#first">first</a></li><li><a href="global.html#flatten">flatten</a></li><li><a href="global.html#get">get</a></li><li><a href="global.html#groupBy">groupBy</a></li><li><a href="global.html#indexOf">indexOf</a></li><li><a href="global.html#inject">inject</a></li><li><a href="global.html#intersect">intersect</a></li><li><a href="global.html#invert">invert</a></li><li><a href="global.html#isArray">isArray</a></li><li><a href="global.html#isBoolean">isBoolean</a></li><li><a href="global.html#isEven">isEven</a></li><li><a href="global.html#isFunction">isFunction</a></li><li><a href="global.html#isNumber">isNumber</a></li><li><a href="global.html#isOdd">isOdd</a></li><li><a href="global.html#isString">isString</a></li><li><a href="global.html#keys">keys</a></li><li><a href="global.html#last">last</a></li><li><a href="global.html#len">len</a></li><li><a href="global.html#map">map</a></li><li><a href="global.html#max">max</a></li><li><a href="global.html#memoize">memoize</a></li><li><a href="global.html#min">min</a></li><li><a href="global.html#mod">mod</a></li><li><a href="global.html#mult">mult</a></li><li><a href="global.html#partition">partition</a></li><li><a href="global.html#pick">pick</a></li><li><a href="global.html#range">range</a></li><li><a href="global.html#reduce">reduce</a></li><li><a href="global.html#reject">reject</a></li><li><a href="global.html#slice">slice</a></li><li><a href="global.html#split">split</a></li><li><a href="global.html#sqrt">sqrt</a></li><li><a href="global.html#square">square</a></li><li><a href="global.html#strip">strip</a></li><li><a href="global.html#subtract">subtract</a></li><li><a href="global.html#take">take</a></li><li><a href="global.html#tap">tap</a></li><li><a href="global.html#transpose">transpose</a></li><li><a href="global.html#union">union</a></li><li><a href="global.html#uniq">uniq</a></li><li><a href="global.html#zip">zip</a></li></ul>
+</nav>
+
+<br clear="both">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha10</a> on Sat Dec 06 2014 17:05:37 GMT-0800 (PST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

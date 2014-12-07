@@ -7,6 +7,9 @@ var take   = funky.take;
 
 describe('take', function() {
   it('throws an error when not used with an array', function() {
+    expect(function() {
+      take(2, {});
+    }).to.throw(TypeError);
   });
 
   it('takes the first n elements from an array', function() {
