@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: groupBy.js</title>
+    <title>JSDoc: Source: flip.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: groupBy.js</h1>
+    <h1 class="page-title">Source: flip.js</h1>
 
     
 
@@ -28,90 +28,38 @@
         <article>
             <pre class="prettyprint source linenums"><code>'use strict';
 
-var curry   = require('./curry');
-var isArray = require('./isArray');
-
-module.exports = groupBy;
+module.exports = flip;
 
 /**
- * Allows you to group a list by a given function.
+ * Reverses the argument order for a given function.
  *
- * This function can be curried.
+ * @param {function} fn The function whose arguments you want flipped.
  *
- * @param {function} groupFn The function that you wish to group the list by.
- * @param {array} list An array of objects to be grouped.
- *
- * @returns {object} Returns an object of the grouped list.
- *
- * @xample
- * function grade(student) {
- *   var score = student.score;
- * 
- *   switch (score) {
- *     case 10: return 'A';
- *     case 9 : return 'A';
- *     case 8 : return 'B';
- *     case 7 : return 'C';
- *     case 6 : return 'D';
- *     case 5 : return 'F';
- *     case 4 : return 'F';
- *     case 3 : return 'F';
- *     case 2 : return 'F';
- *     case 1 : return 'F';
- *     case 0 : return 'F';
- *   }
- * }
- *
- *  var students = [
- *    { name: 'Joshua', score: 6 },
- *    { name: 'Arnold', score: 8 },
- *    { name: 'Becky', score: 7 }
- *  ];
- *
- * groupBy(grade, students);
- * // returns {
- *    'B': [{ name: 'Arnold', score: 8 }],
- *    'C': [{ name: 'Becky', score: 7 }],
- *    'D': [{ name: 'Joshua', score: 6 }],
- *  }
+ * @returns {function} A function that wraps the given function and reverses the arguments given to it.
  *
  * @example
- * var groupByGrade = groupBy(grade);
+ * function div(a, b) {
+ *  return a / b;
+ * }
  *
- * groupByGrade(students);
- * // returns {
- *    'B': [{ name: 'Arnold', score: 8 }],
- *    'C': [{ name: 'Becky', score: 7 }],
- *    'D': [{ name: 'Joshua', score: 6 }],
- *  }
+ * var flippedDiv = flip(div);
+ *
+ * flippedDiv(2, 4);
+ * // returns 2
  */
 
-function groupBy(groupFn, list) {
-  var argsLen = arguments.length;
+function flip(fn) {
+  return function() {
+    var len = arguments.length;
+    var args = new Array(len);
+    var j = 0;
 
-  if (argsLen === 1 &amp;&amp; !isArray(groupFn)) {
-    return curry(groupBy)(groupFn);
-  }
-
-  if (argsLen > 1 &amp;&amp; !isArray(list)) {
-    throw new TypeError('groupBy requires a list');
-  }
-
-  var result = {};
-  var len = list.length;
-
-  for (var i = 0; i &lt; len; i += 1) {
-    var item = list[i];
-    var group = groupFn(item);
-
-    if (!result[group]) {
-      result[group] = [];
+    for (var i = len - 1; i >= 0; i -= 1, j += 1) {
+      args[i] = arguments[j]; 
     }
 
-    result[group].push(item);
-  }
-
-  return result;
+    return fn.apply(args);
+  };
 }
 </code></pre>
         </article>
