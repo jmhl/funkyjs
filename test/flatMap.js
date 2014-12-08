@@ -5,7 +5,7 @@ var expect  = chai.expect;
 var funky   = require('../funky');
 var flatMap = funky.flatMap;
 
-describe('map', function() {
+describe('flatMap', function() {
   it('should flat map an array', function() {
     var arr = ['aa1bb', 'cc2dd', 'ee3ff'];
     var cb = function(str) { return str.split(/\d/); };
