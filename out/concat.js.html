@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: indexOf.js</title>
+    <title>JSDoc: Source: concat.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: indexOf.js</h1>
+    <h1 class="page-title">Source: concat.js</h1>
 
     
 
@@ -28,47 +28,31 @@
         <article>
             <pre class="prettyprint source linenums"><code>'use strict';
 
-var curry    = require('./curry');
-var isArray  = require('./isArray');
-var isNumber = require('./isNumber');
-
-module.exports = indexOf;
+module.exports = concat;
 
 /**
- * Returns the index of a particular value in the array. It also allows you to specify which index you want to start the search from.
+ * Takes two arrays and concatenates the second array onto the first. Note that this alters the first array.
  *
- * @param {array} arr The list to search in.
- * @param {var} val The value that you wish to search for.
- * @param {number} fromIdx (optional) The index from which you want to start searching for the value from.
+ * @param {array} base The base array to be added to.
+ * @param {array} toAdd The array to be added to the base array.
  *
- * @returns {number} If it finds the value, it returns the index of the first occurrence of the value. Otherwise it returns null.
- *
- * @example
- * var arr = [1, 2, 3, 1, 2, 3];
- *
- * indexOf(arr, 2);
- * // returns 1
+ * @returns {array} Returns the first array (base) with the items from the second array (toAdd) added to it.
  *
  * @example
- * indexOf(arr, 2, 3);
- * // returns 4
+ * var arr = [1, 2, 3];
+ *
+ * concat(arr, [4, 5]);
+ * // returns [1, 2, 3, 4, 5]
  */
 
-function indexOf(arr, val, fromIdx) {
-  if (!isArray(arr) || !isNumber(val)) {
-    throw new TypeError('Must take an array and a number');
+function concat(base, toAdd) {
+  var len = toAdd.length;
+
+  for (var i = 0; i &lt; len; i += 1) {
+    base.push(toAdd[i]);
   }
 
-  var len = arr.length;
-  var start = fromIdx ? fromIdx : 0;
-
-  for (var i = start; i &lt; len; i += 1) {
-    if (arr[i] === val) {
-      return i;
-    }
-  }
-
-  return null;
+  return base;
 }
 </code></pre>
         </article>

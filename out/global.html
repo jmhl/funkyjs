@@ -1047,6 +1047,189 @@ squareThenDouble(3);
             
 <dt>
     
+        <h4 class="name" id="concat"><span class="type-signature"></span>concat<span class="signature">(base, toAdd)</span><span class="type-signature"> &rarr; {array}</span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Takes two arrays and concatenates the second array onto the first. Note that this alters the first array.
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>base</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The base array to be added to.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>toAdd</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The array to be added to the base array.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="concat.js.html">concat.js</a>, <a href="concat.js.html#line20">line 20</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    Returns the first array (base) with the items from the second array (toAdd) added to it.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">array</span>
+
+
+    </dd>
+</dl>
+
+        
+
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>var arr = [1, 2, 3];
+
+concat(arr, [4, 5]);
+// returns [1, 2, 3, 4, 5]</code></pre>
+
+    
+</dd>
+
+        
+            
+<dt>
+    
         <h4 class="name" id="copy"><span class="type-signature"></span>copy<span class="signature">(list)</span><span class="type-signature"> &rarr; {array/object}</span></h4>
 
         
@@ -2634,6 +2817,199 @@ filterEvens(nums);
 
 first(arr);
 // returns 1</code></pre>
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        <h4 class="name" id="flatMap"><span class="type-signature"></span>flatMap<span class="signature">(fn, arr)</span><span class="type-signature"> &rarr; {array}</span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Iterates over an array and calls a given function on each item; flatMap is preferred to map when the result of function returns an array itself. Flatpmap returns a new one-dimensional array in this instance. Essentially a short-cut to using map and then flatten on the result.
+
+In Clojure this is known as mapcat (https://clojuredocs.org/clojure.core/mapcat).
+
+This function can be curried.
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>fn</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The call to be called on each item.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>arr</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The array to be flat mapped.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="flatMap.js.html">flatMap.js</a>, <a href="flatMap.js.html#line34">line 34</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    A one-dimensional array of the results.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">array</span>
+
+
+    </dd>
+</dl>
+
+        
+
+    
+        <h5>Examples</h5>
+        
+    <pre class="prettyprint"><code>var arr = ['aa1bb', 'cc2dd', 'ee3ff'];
+var cb = function(str) { return str.split(/\d/); };
+
+flatMap(cb, arr);
+// returns ['aa', 'bb', 'cc', 'dd', 'ee', 'ff']</code></pre>
+
+    <pre class="prettyprint"><code>var flatMapSplit = flatMap(cb);
+
+flatMapSplit(arr);
+// returns ['aa', 'bb', 'cc', 'dd', 'ee', 'ff']</code></pre>
 
     
 </dd>
@@ -9982,13 +10358,13 @@ zip(obj);
 </div>
 
 <nav>
-    <h2><a href="index.html">Index</a></h2><h3>Global</h3><ul><li><a href="global.html#add">add</a></li><li><a href="global.html#allAs">allAs</a></li><li><a href="global.html#compact">compact</a></li><li><a href="global.html#compare">compare</a></li><li><a href="global.html#compose">compose</a></li><li><a href="global.html#copy">copy</a></li><li><a href="global.html#count">count</a></li><li><a href="global.html#curry">curry</a></li><li><a href="global.html#detect">detect</a></li><li><a href="global.html#div">div</a></li><li><a href="global.html#divmod">divmod</a></li><li><a href="global.html#drop">drop</a></li><li><a href="global.html#filter">filter</a></li><li><a href="global.html#first">first</a></li><li><a href="global.html#flatten">flatten</a></li><li><a href="global.html#flip">flip</a></li><li><a href="global.html#get">get</a></li><li><a href="global.html#groupBy">groupBy</a></li><li><a href="global.html#indexOf">indexOf</a></li><li><a href="global.html#inject">inject</a></li><li><a href="global.html#intersect">intersect</a></li><li><a href="global.html#invert">invert</a></li><li><a href="global.html#isArray">isArray</a></li><li><a href="global.html#isBoolean">isBoolean</a></li><li><a href="global.html#isEven">isEven</a></li><li><a href="global.html#isFunction">isFunction</a></li><li><a href="global.html#isNumber">isNumber</a></li><li><a href="global.html#isOdd">isOdd</a></li><li><a href="global.html#isString">isString</a></li><li><a href="global.html#keys">keys</a></li><li><a href="global.html#last">last</a></li><li><a href="global.html#len">len</a></li><li><a href="global.html#map">map</a></li><li><a href="global.html#max">max</a></li><li><a href="global.html#memoize">memoize</a></li><li><a href="global.html#min">min</a></li><li><a href="global.html#mod">mod</a></li><li><a href="global.html#mult">mult</a></li><li><a href="global.html#partition">partition</a></li><li><a href="global.html#pick">pick</a></li><li><a href="global.html#range">range</a></li><li><a href="global.html#reduce">reduce</a></li><li><a href="global.html#reject">reject</a></li><li><a href="global.html#reverse">reverse</a></li><li><a href="global.html#slice">slice</a></li><li><a href="global.html#split">split</a></li><li><a href="global.html#sqrt">sqrt</a></li><li><a href="global.html#square">square</a></li><li><a href="global.html#strip">strip</a></li><li><a href="global.html#subtract">subtract</a></li><li><a href="global.html#take">take</a></li><li><a href="global.html#tap">tap</a></li><li><a href="global.html#transpose">transpose</a></li><li><a href="global.html#union">union</a></li><li><a href="global.html#uniq">uniq</a></li><li><a href="global.html#zip">zip</a></li></ul>
+    <h2><a href="index.html">Index</a></h2><h3>Global</h3><ul><li><a href="global.html#add">add</a></li><li><a href="global.html#allAs">allAs</a></li><li><a href="global.html#compact">compact</a></li><li><a href="global.html#compare">compare</a></li><li><a href="global.html#compose">compose</a></li><li><a href="global.html#concat">concat</a></li><li><a href="global.html#copy">copy</a></li><li><a href="global.html#count">count</a></li><li><a href="global.html#curry">curry</a></li><li><a href="global.html#detect">detect</a></li><li><a href="global.html#div">div</a></li><li><a href="global.html#divmod">divmod</a></li><li><a href="global.html#drop">drop</a></li><li><a href="global.html#filter">filter</a></li><li><a href="global.html#first">first</a></li><li><a href="global.html#flatMap">flatMap</a></li><li><a href="global.html#flatten">flatten</a></li><li><a href="global.html#flip">flip</a></li><li><a href="global.html#get">get</a></li><li><a href="global.html#groupBy">groupBy</a></li><li><a href="global.html#indexOf">indexOf</a></li><li><a href="global.html#inject">inject</a></li><li><a href="global.html#intersect">intersect</a></li><li><a href="global.html#invert">invert</a></li><li><a href="global.html#isArray">isArray</a></li><li><a href="global.html#isBoolean">isBoolean</a></li><li><a href="global.html#isEven">isEven</a></li><li><a href="global.html#isFunction">isFunction</a></li><li><a href="global.html#isNumber">isNumber</a></li><li><a href="global.html#isOdd">isOdd</a></li><li><a href="global.html#isString">isString</a></li><li><a href="global.html#keys">keys</a></li><li><a href="global.html#last">last</a></li><li><a href="global.html#len">len</a></li><li><a href="global.html#map">map</a></li><li><a href="global.html#max">max</a></li><li><a href="global.html#memoize">memoize</a></li><li><a href="global.html#min">min</a></li><li><a href="global.html#mod">mod</a></li><li><a href="global.html#mult">mult</a></li><li><a href="global.html#partition">partition</a></li><li><a href="global.html#pick">pick</a></li><li><a href="global.html#range">range</a></li><li><a href="global.html#reduce">reduce</a></li><li><a href="global.html#reject">reject</a></li><li><a href="global.html#reverse">reverse</a></li><li><a href="global.html#slice">slice</a></li><li><a href="global.html#split">split</a></li><li><a href="global.html#sqrt">sqrt</a></li><li><a href="global.html#square">square</a></li><li><a href="global.html#strip">strip</a></li><li><a href="global.html#subtract">subtract</a></li><li><a href="global.html#take">take</a></li><li><a href="global.html#tap">tap</a></li><li><a href="global.html#transpose">transpose</a></li><li><a href="global.html#union">union</a></li><li><a href="global.html#uniq">uniq</a></li><li><a href="global.html#zip">zip</a></li></ul>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha10</a> on Sun Dec 07 2014 16:03:46 GMT-0800 (PST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha10</a> on Mon Dec 08 2014 00:11:22 GMT-0800 (PST)
 </footer>
 
 <script> prettyPrint(); </script>

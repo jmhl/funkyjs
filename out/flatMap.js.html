@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: indexOf.js</title>
+    <title>JSDoc: Source: flatMap.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: indexOf.js</h1>
+    <h1 class="page-title">Source: flatMap.js</h1>
 
     
 
@@ -28,47 +28,55 @@
         <article>
             <pre class="prettyprint source linenums"><code>'use strict';
 
-var curry    = require('./curry');
-var isArray  = require('./isArray');
-var isNumber = require('./isNumber');
+var curry      = require('./curry');
+var isFunction = require('./isFunction');
 
-module.exports = indexOf;
+module.exports = flatMap;
 
 /**
- * Returns the index of a particular value in the array. It also allows you to specify which index you want to start the search from.
+ * Iterates over an array and calls a given function on each item; flatMap is preferred to map when the result of function returns an array itself. Flatpmap returns a new one-dimensional array in this instance. Essentially a short-cut to using map and then flatten on the result.
  *
- * @param {array} arr The list to search in.
- * @param {var} val The value that you wish to search for.
- * @param {number} fromIdx (optional) The index from which you want to start searching for the value from.
+ * In Clojure this is known as mapcat (https://clojuredocs.org/clojure.core/mapcat).
  *
- * @returns {number} If it finds the value, it returns the index of the first occurrence of the value. Otherwise it returns null.
+ * This function can be curried.
  *
- * @example
- * var arr = [1, 2, 3, 1, 2, 3];
+ * @param {function} fn The call to be called on each item.
+ * @param {array} arr The array to be flat mapped. 
  *
- * indexOf(arr, 2);
- * // returns 1
+ * @returns {array} A one-dimensional array of the results.
  *
  * @example
- * indexOf(arr, 2, 3);
- * // returns 4
+ * var arr = ['aa1bb', 'cc2dd', 'ee3ff'];
+ * var cb = function(str) { return str.split(/\d/); };
+ *
+ * flatMap(cb, arr);
+ * // returns ['aa', 'bb', 'cc', 'dd', 'ee', 'ff']
+ *
+ * @example
+ * var flatMapSplit = flatMap(cb);
+ *
+ * flatMapSplit(arr);
+ * // returns ['aa', 'bb', 'cc', 'dd', 'ee', 'ff']
  */
 
-function indexOf(arr, val, fromIdx) {
-  if (!isArray(arr) || !isNumber(val)) {
-    throw new TypeError('Must take an array and a number');
+function flatMap(fn, arr) {
+  if (arguments.length === 1 &amp;&amp; isFunction(fn)) {
+    return curry(flatMap)(fn);
   }
 
+  var result = [];
   var len = arr.length;
-  var start = fromIdx ? fromIdx : 0;
 
-  for (var i = start; i &lt; len; i += 1) {
-    if (arr[i] === val) {
-      return i;
+  for (var i = 0; i &lt; len; i += 1) {
+    var temp = fn(arr[i]);
+    var tempLen = temp.length;
+
+    for (var j = 0; j &lt; tempLen; j += 1) {
+      result.push(temp[j]);
     }
   }
 
-  return null;
+  return result;
 }
 </code></pre>
         </article>
