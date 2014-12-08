@@ -9,6 +9,6 @@ module.exports = {
   name: 'pick',
   maxTime: 2,
   fn: function() {
-    pick(obj, ['one', 'three']);
+    pick(['one', 'three'], obj);
   }
 };
