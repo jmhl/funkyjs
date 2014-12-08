@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: mult.js</title>
+    <title>JSDoc: Source: reverse.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: mult.js</h1>
+    <h1 class="page-title">Source: reverse.js</h1>
 
     
 
@@ -28,37 +28,32 @@
         <article>
             <pre class="prettyprint source linenums"><code>'use strict';
 
-var curry = require('./curry');
-
-module.exports = mult;
+module.exports = reverse;
 
 /**
- * Multiplies two numbers.
+ * Takes a list and returns a new list in reverse order.
  *
- * This function can be curried.
+ * @param {array} arr The array to be reversed.
  *
- * @param {number} a
- * @param {number} b
- *
- * @returns {number} The result of the multiplication.
+ * @returns {array} A new array with the items from the given array in reverse order.
  *
  * @example
- * mult(2, 3);
- * // returns 6
+ * var arr = [1, 2, 3];
  *
- * @example
- * var multiplyByTwo = mult(2);
- *
- * multiplyByTwo(3);
- * // returns 6
+ * reverse(arr);
+ * //returns [3, 2, 1]
  */
 
-function mult(a, b) {
-  if (arguments.length === 1) {
-    return curry(mult)(a);
+function reverse(arr) {
+  var len = arr.length;
+  var result = new Array(len);
+  var j = 0;
+
+  for (var i = len - 1; i >= 0; i -= 1, j += 1) {
+    result[j] = arr[i];
   }
 
-  return a * b;
+  return result;
 }
 </code></pre>
         </article>

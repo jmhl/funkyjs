@@ -1756,6 +1756,8 @@ expect(detect(isEven, list);
     
     <div class="description">
         Divides two numbers.
+
+This function can be curried.
     </div>
     
 
@@ -1868,7 +1870,7 @@ expect(detect(isEven, list);
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="div.js.html">div.js</a>, <a href="div.js.html#line18">line 18</a>
+        <a href="div.js.html">div.js</a>, <a href="div.js.html#line29">line 29</a>
     </li></ul></dd>
     
 
@@ -1915,10 +1917,15 @@ expect(detect(isEven, list);
         
 
     
-        <h5>Example</h5>
+        <h5>Examples</h5>
         
     <pre class="prettyprint"><code>div(4, 2);
 // returns 2</code></pre>
+
+    <pre class="prettyprint"><code>var divideByTwo = div(2);
+
+divideByTwo(8);
+// returns 4</code></pre>
 
     
 </dd>
@@ -7752,6 +7759,166 @@ rejectEvens(nums);
             
 <dt>
     
+        <h4 class="name" id="reverse"><span class="type-signature"></span>reverse<span class="signature">(arr)</span><span class="type-signature"> &rarr; {array}</span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Takes a list and returns a new list in reverse order.
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>arr</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The array to be reversed.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="reverse.js.html">reverse.js</a>, <a href="reverse.js.html#line19">line 19</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    A new array with the items from the given array in reverse order.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">array</span>
+
+
+    </dd>
+</dl>
+
+        
+
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>var arr = [1, 2, 3];
+
+reverse(arr);
+//returns [3, 2, 1]</code></pre>
+
+    
+</dd>
+
+        
+            
+<dt>
+    
         <h4 class="name" id="slice"><span class="type-signature"></span>slice<span class="signature">(str, start, length)</span><span class="type-signature"> &rarr; {string}</span></h4>
 
         
@@ -8600,6 +8767,8 @@ strip(str)
     
     <div class="description">
         Subtract one number from another.
+
+This function can be curried.
     </div>
     
 
@@ -8712,7 +8881,7 @@ strip(str)
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="subtract.js.html">subtract.js</a>, <a href="subtract.js.html#line18">line 18</a>
+        <a href="subtract.js.html">subtract.js</a>, <a href="subtract.js.html#line29">line 29</a>
     </li></ul></dd>
     
 
@@ -8759,10 +8928,15 @@ strip(str)
         
 
     
-        <h5>Example</h5>
+        <h5>Examples</h5>
         
     <pre class="prettyprint"><code>subtract(10, 3);
 // returns 7</code></pre>
+
+    <pre class="prettyprint"><code>var subtractTwo = subtract(2);
+
+subtractTwo(10);
+// returns 8</code></pre>
 
     
 </dd>
@@ -9808,13 +9982,13 @@ zip(obj);
 </div>
 
 <nav>
-    <h2><a href="index.html">Index</a></h2><h3>Global</h3><ul><li><a href="global.html#add">add</a></li><li><a href="global.html#allAs">allAs</a></li><li><a href="global.html#compact">compact</a></li><li><a href="global.html#compare">compare</a></li><li><a href="global.html#compose">compose</a></li><li><a href="global.html#copy">copy</a></li><li><a href="global.html#count">count</a></li><li><a href="global.html#curry">curry</a></li><li><a href="global.html#detect">detect</a></li><li><a href="global.html#div">div</a></li><li><a href="global.html#divmod">divmod</a></li><li><a href="global.html#drop">drop</a></li><li><a href="global.html#filter">filter</a></li><li><a href="global.html#first">first</a></li><li><a href="global.html#flatten">flatten</a></li><li><a href="global.html#flip">flip</a></li><li><a href="global.html#get">get</a></li><li><a href="global.html#groupBy">groupBy</a></li><li><a href="global.html#indexOf">indexOf</a></li><li><a href="global.html#inject">inject</a></li><li><a href="global.html#intersect">intersect</a></li><li><a href="global.html#invert">invert</a></li><li><a href="global.html#isArray">isArray</a></li><li><a href="global.html#isBoolean">isBoolean</a></li><li><a href="global.html#isEven">isEven</a></li><li><a href="global.html#isFunction">isFunction</a></li><li><a href="global.html#isNumber">isNumber</a></li><li><a href="global.html#isOdd">isOdd</a></li><li><a href="global.html#isString">isString</a></li><li><a href="global.html#keys">keys</a></li><li><a href="global.html#last">last</a></li><li><a href="global.html#len">len</a></li><li><a href="global.html#map">map</a></li><li><a href="global.html#max">max</a></li><li><a href="global.html#memoize">memoize</a></li><li><a href="global.html#min">min</a></li><li><a href="global.html#mod">mod</a></li><li><a href="global.html#mult">mult</a></li><li><a href="global.html#partition">partition</a></li><li><a href="global.html#pick">pick</a></li><li><a href="global.html#range">range</a></li><li><a href="global.html#reduce">reduce</a></li><li><a href="global.html#reject">reject</a></li><li><a href="global.html#slice">slice</a></li><li><a href="global.html#split">split</a></li><li><a href="global.html#sqrt">sqrt</a></li><li><a href="global.html#square">square</a></li><li><a href="global.html#strip">strip</a></li><li><a href="global.html#subtract">subtract</a></li><li><a href="global.html#take">take</a></li><li><a href="global.html#tap">tap</a></li><li><a href="global.html#transpose">transpose</a></li><li><a href="global.html#union">union</a></li><li><a href="global.html#uniq">uniq</a></li><li><a href="global.html#zip">zip</a></li></ul>
+    <h2><a href="index.html">Index</a></h2><h3>Global</h3><ul><li><a href="global.html#add">add</a></li><li><a href="global.html#allAs">allAs</a></li><li><a href="global.html#compact">compact</a></li><li><a href="global.html#compare">compare</a></li><li><a href="global.html#compose">compose</a></li><li><a href="global.html#copy">copy</a></li><li><a href="global.html#count">count</a></li><li><a href="global.html#curry">curry</a></li><li><a href="global.html#detect">detect</a></li><li><a href="global.html#div">div</a></li><li><a href="global.html#divmod">divmod</a></li><li><a href="global.html#drop">drop</a></li><li><a href="global.html#filter">filter</a></li><li><a href="global.html#first">first</a></li><li><a href="global.html#flatten">flatten</a></li><li><a href="global.html#flip">flip</a></li><li><a href="global.html#get">get</a></li><li><a href="global.html#groupBy">groupBy</a></li><li><a href="global.html#indexOf">indexOf</a></li><li><a href="global.html#inject">inject</a></li><li><a href="global.html#intersect">intersect</a></li><li><a href="global.html#invert">invert</a></li><li><a href="global.html#isArray">isArray</a></li><li><a href="global.html#isBoolean">isBoolean</a></li><li><a href="global.html#isEven">isEven</a></li><li><a href="global.html#isFunction">isFunction</a></li><li><a href="global.html#isNumber">isNumber</a></li><li><a href="global.html#isOdd">isOdd</a></li><li><a href="global.html#isString">isString</a></li><li><a href="global.html#keys">keys</a></li><li><a href="global.html#last">last</a></li><li><a href="global.html#len">len</a></li><li><a href="global.html#map">map</a></li><li><a href="global.html#max">max</a></li><li><a href="global.html#memoize">memoize</a></li><li><a href="global.html#min">min</a></li><li><a href="global.html#mod">mod</a></li><li><a href="global.html#mult">mult</a></li><li><a href="global.html#partition">partition</a></li><li><a href="global.html#pick">pick</a></li><li><a href="global.html#range">range</a></li><li><a href="global.html#reduce">reduce</a></li><li><a href="global.html#reject">reject</a></li><li><a href="global.html#reverse">reverse</a></li><li><a href="global.html#slice">slice</a></li><li><a href="global.html#split">split</a></li><li><a href="global.html#sqrt">sqrt</a></li><li><a href="global.html#square">square</a></li><li><a href="global.html#strip">strip</a></li><li><a href="global.html#subtract">subtract</a></li><li><a href="global.html#take">take</a></li><li><a href="global.html#tap">tap</a></li><li><a href="global.html#transpose">transpose</a></li><li><a href="global.html#union">union</a></li><li><a href="global.html#uniq">uniq</a></li><li><a href="global.html#zip">zip</a></li></ul>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha10</a> on Sun Dec 07 2014 15:42:26 GMT-0800 (PST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha10</a> on Sun Dec 07 2014 16:03:46 GMT-0800 (PST)
 </footer>
 
 <script> prettyPrint(); </script>
