@@ -35,4 +35,10 @@ describe('range', function() {
   it('should return the number when the arguments are equal', function() {
     expect(range(10, 10)).to.deep.equal([10]);
   });
+
+  it('should work with a step range', function() {
+    var result = [2, 4, 6, 8, 10];
+
+    expect(range(2, 4, 10)).to.deep.equal(result);
+  });
 });
