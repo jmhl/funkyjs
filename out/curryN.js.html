@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: pick.js</title>
+    <title>JSDoc: Source: curryN.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: pick.js</h1>
+    <h1 class="page-title">Source: curryN.js</h1>
 
     
 
@@ -30,64 +30,52 @@
 
 'use strict';
 
-var curry    = require('./curry');
-var isArray  = require('./isArray');
-var isObject = require('./isObject');
+var isNumber   = require('./isNumber');
+var isFunction = require('./isFunction');
 
-module.exports = pick;
+module.exports = curryN;
 
 /**
- * Takes an object and an array of keys, and then returns a new object containing just the key, value pairings from the given keys.
+ * Curries a function. Returns a new function with the first parameter bound.
+ * 
+ * @param {number} numArgs The total number of arguments.
+ * @param {function} fn The function to the curried.
  *
- * If an object does not contain one of the keys passed to it, pick will ignore those undefined properties and still return an object.
- *
- * This function can be curried.
- *
- * @param {array} array An array of the property names that we wish to pick from an object. Even if you are just picking one value, it must be wrapped in an array.
- * @param {object} obj The original object that we wish to pick values from.
- *
- * @returns {object} A new object with just the specified properties picked from the array.
+ * @returns A new function that can take n arguments.
  *
  * @example
- * var obj = { 'one': 1, 'two': 2, 'three': 3 };
- *
- * pick(['one', 'three'], obj);
- * // returns { 'one': 1, 'three': 3 }
- *
- * @example
- * var obj = { 'one': 1, 'two': 2, 'three': 3 };
- * var pickProps = pick(['one', 'three', 'four']);
- *
- * pickProps(obj);
- * // returns { 'one': 1, 'three': 3 }
+ * var curriedAddThree = curryN(3, addThree);
+ * var f = curriedAddThree(1, 2);
+ * f(3);
+ * // returns 6
  */
 
-function pick(props, obj) {
-  if (arguments.length === 1 &amp;&amp; isArray(props)) {
-    return curry(pick)(props);
+function curryN(numArgs, fn) {
+  if (!isNumber(numArgs)) {
+    throw new TypeError('Must be told a number of arguments to curry');
+  } else if (!isFunction(fn)) {
+    throw new TypeError('Must be passed a function to curry');
   }
 
-  if (!isObject(obj)) {
-    throw new TypeError('Pick must be used with an object'); 
-  }
+  var maxArgs = numArgs;
+  var args = [];
 
-  return _pick(props, obj);
-}
+  function curry() {
+    if (arguments.length === 0) {
+      throw new TypeError('Function called with no arguments');
+    }
+    var newArgs = Array.prototype.slice.call(arguments);
+    args = args.concat(newArgs);
+    maxArgs -= newArgs.length;
 
-function _pick(props, obj) {
-  var result = {};
-  var len = props.length;
-
-  for (var i = 0; i &lt; len; i += 1) {
-    var key = props[i];
-    var prop = obj[key];
-    
-    if (prop) {
-      result[key] = prop;
+    if (maxArgs === 0) {
+      return fn.apply(null, args);
+    } else {
+      return curry; 
     }
   }
 
-  return result;
+  return curry;
 }
 </code></pre>
         </article>

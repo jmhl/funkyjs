@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: pick.js</title>
+    <title>JSDoc: Source: find.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: pick.js</h1>
+    <h1 class="page-title">Source: find.js</h1>
 
     
 
@@ -30,64 +30,54 @@
 
 'use strict';
 
-var curry    = require('./curry');
-var isArray  = require('./isArray');
-var isObject = require('./isObject');
+var curry      = require('./curry');
+var isArray    = require('./isArray');
+var isFunction = require('./isFunction');
 
-module.exports = pick;
+module.exports = find;
 
 /**
- * Takes an object and an array of keys, and then returns a new object containing just the key, value pairings from the given keys.
- *
- * If an object does not contain one of the keys passed to it, pick will ignore those undefined properties and still return an object.
+ * Returns the first element from the list which returns true from the predicate function. If no element is found, it returns undefined.
  *
  * This function can be curried.
  *
- * @param {array} array An array of the property names that we wish to pick from an object. Even if you are just picking one value, it must be wrapped in an array.
- * @param {object} obj The original object that we wish to pick values from.
+ * @param {function} predicate
+ * @param {array} list
  *
- * @returns {object} A new object with just the specified properties picked from the array.
- *
- * @example
- * var obj = { 'one': 1, 'two': 2, 'three': 3 };
- *
- * pick(['one', 'three'], obj);
- * // returns { 'one': 1, 'three': 3 }
+ * @returns {element} The first element from the list that matches the predicate, or undefined.
  *
  * @example
- * var obj = { 'one': 1, 'two': 2, 'three': 3 };
- * var pickProps = pick(['one', 'three', 'four']);
+ * function isEven(a) {
+ *   return a % 2 === 0;
+ * }
  *
- * pickProps(obj);
- * // returns { 'one': 1, 'three': 3 }
+ * var list = [5, 7, 3, 6, 2, 8];
+ *
+ * find(isEven, list);
+ * // returns 6
+ *
+ * @example
+ * var list = [5, 7, 3, 6, 2, 8];
+ *
+ * var findEven = find(isEven);
+ * findEven(list);
+ * // returns 6
  */
 
-function pick(props, obj) {
-  if (arguments.length === 1 &amp;&amp; isArray(props)) {
-    return curry(pick)(props);
+function find(predicate, list) {
+  if (arguments.length === 1 &amp;&amp; isFunction(predicate)) {
+    return curry(find)(predicate);
   }
 
-  if (!isObject(obj)) {
-    throw new TypeError('Pick must be used with an object'); 
-  }
-
-  return _pick(props, obj);
-}
-
-function _pick(props, obj) {
-  var result = {};
-  var len = props.length;
+  var len = list.length;
 
   for (var i = 0; i &lt; len; i += 1) {
-    var key = props[i];
-    var prop = obj[key];
-    
-    if (prop) {
-      result[key] = prop;
+    if (predicate(list[i])) {
+      return list[i];
     }
   }
 
-  return result;
+  return undefined;
 }
 </code></pre>
         </article>
