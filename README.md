@@ -1,7 +1,7 @@
 # Funky
 Just trying to better understand functional programming in JavaScript.
 
-### TODO:
+### TODO
 + Laziness?
 + Maximum & Minimum for arrays
 
