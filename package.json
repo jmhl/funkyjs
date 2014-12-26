@@ -1,7 +1,7 @@
 {
   "name": "funky",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.0",
+  "description": "n/a",
   "main": "funky.js",
   "scripts": {
     "test": "mocha"
@@ -13,7 +13,6 @@
     "chai": "^1.10.0",
     "gulp": "^3.8.10",
     "gulp-bench": "^1.1.0",
-    "jshint": "^2.5.10",
     "mocha": "^2.0.1"
   }
 }
