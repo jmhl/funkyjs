@@ -1,6 +1,10 @@
 # Funky
 Just trying to better understand functional programming in JavaScript.
 
+### TODO:
++ Laziness?
++ Maximum & Minimum for arrays
+
 ### Resources
 + [http://scott.sauyet.com/Javascript/Talk/2014/01/FuncProgTalk]()
 + [http://ramda.github.io/ramdocs/docs/R.html]()
