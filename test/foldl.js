@@ -13,4 +13,11 @@ describe('foldl', function() {
 
     expect(folded).to.equal(6);
   });
+
+  it('should work for non-zero accumulators', function() {
+    var arr = [1,2,3];
+    var folded = foldl(add, 10, arr);
+
+    expect(folded).to.equal(16);
+  });
 });
