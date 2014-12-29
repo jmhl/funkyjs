@@ -20,6 +20,12 @@ describe('zipWith', function() {
   });
 
   it('should zip the two lists', function() {
+    expect(function() {
+      zipWith(add, list1);
+    }).to.throw(TypeError);
+  });
+
+  it('should zip the two lists', function() {
     var resLen = result.length;
 
     expect(zipped.length).to.equal(resLen);
