@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: isArray.js</title>
+    <title>JSDoc: Source: tail.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: isArray.js</h1>
+    <h1 class="page-title">Source: tail.js</h1>
 
     
 
@@ -30,22 +30,31 @@
 
 'use strict';
 
-module.exports = isArray;
+module.exports = tail;
 
 /**
- * Detects whether the argument is an array.
+ * Returns the tail of an array - the array minus the first element.
  *
- * @param {var} arr The element to be tested.
+ * @params {array} arr
  *
- * @returns {boolean} Returns true if the element is an array, but false if the element is not an array.
+ * @returns {array} Returns a new array of all the elements from the original array with the exception of the first element.
  *
  * @example
- * isArray([]);
- * // true
+ * var arr = [1, 2, 3];
+ *
+ * tail(arr);
+ * // returns [2, 3]
  */
 
-function isArray(arr) {
-  return Array.isArray(arr);
+function tail(arr) {
+  var len = arr.length;
+  var result = new Array(len - 1);
+
+  for (var i = 1; i &lt; len; i += 1) {
+    result[i - 1] = arr[i];
+  }
+
+  return result;
 }
 </code></pre>
         </article>
