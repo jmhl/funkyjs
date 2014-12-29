@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: mod.js</title>
+    <title>JSDoc: Source: words.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: mod.js</h1>
+    <h1 class="page-title">Source: words.js</h1>
 
     
 
@@ -30,23 +30,24 @@
 
 'use strict';
 
-module.exports = mod;
+module.exports = words;
 
 /**
- * Returns the remainder of division of two numbers 
+ * Should split a string on spaces into an array of strings.
  *
- * @param {number} a The number to be divided.
- * @param {number} b The divisor.
+ * @params {string} str The string to be split.
  *
- * @returns {number} The modulus, or remainder of the division.
+ * @returns {array} Returns an array of strings.
  *
  * @example
- * mod(5, 2);
- * // returns 1
+ * var str = 'this is a test';
+ *
+ * words(str);
+ * // returns ['this', 'is', 'a', 'test']
  */
 
-function mod(a, b) {
-  return a % b;
+function words(str) {
+  return str.split(/ /);
 }
 </code></pre>
         </article>
