@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: foldl.js</title>
+    <title>JSDoc: Source: dropWhile.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: foldl.js</h1>
+    <h1 class="page-title">Source: dropWhile.js</h1>
 
     
 
@@ -30,33 +30,56 @@
 
 'use strict';
 
-module.exports = foldl;
+var curry      = require('./curry');
+var isFunction = require('./isFunction');
+
+module.exports = dropWhile;
 
 /**
- * Performs a left fold on an array: traverses a list from left to right and performs a function on each element until left with a single value. We start with an initial value, the accumulator (acc), and each operation will result in a new accumulator.
+ * Drop elements from the array that match the predicate function until it returns false then returns an array with all the remaining elements.
  *
- * @params {function} fn The function to apply to each element.
- * @params {element} acc The initial accumulator value.
- * @params {array} arr The array to traverse.
+ * @params {function} predicate The predicate function.
+ * @params {array} arr
  *
- * @returns The single result of the fold.
+ * @returns {array} Returns an array of only elements that return true for the predicate function.
  *
  * @example
- * function mult(a, b) {
- *   return a * b;
+ * function isEven(num) {
+ *   return num % 2 === 0;
  * }
  *
- * var arr = [2, 3, 4];
- * foldl(mult, 2, arr);
- * // returns 48
+ * var arr = [2, 4, 6, 7, 8, 10, 11];
+ * 
+ * dropWhile(isEven, arr);
+ * // returns [7, 8, 10, 11]
+ *
+ * @example
+ * var dropWhileEven = dropWhile(isEven);
+ * dropWhileEven(arr);
+ * // returns [7, 8, 10, 11]
  */
 
-function foldl(fn, acc, arr) {
+function dropWhile(predicate, arr) {
+  if (!isFunction(predicate)) {
+    throw new TypeError('DropWhile requires a predicate function');
+  }
+
+  if (arguments.length === 1) {
+    return curry(dropWhile)(predicate);
+  }
+
   var len = arr.length;
-  var result = acc;
+  var result = [];
+  var reject = true;
 
   for (var i = 0; i &lt; len; i += 1) {
-    result = fn(result, arr[i]);
+    if (!predicate(arr[i])) {
+      reject = false;
+    }
+
+    if (!reject) {
+      result.push(arr[i]);
+    }
   }
 
   return result;

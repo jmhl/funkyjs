@@ -27,4 +27,3 @@ describe('drop', function() {
     expect(dropTwo(arr)).to.deep.equal(result);
   });
 });
-
