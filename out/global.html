@@ -3708,6 +3708,418 @@ flippedDiv(2, 4);
             
 <dt>
     
+        <h4 class="name" id="foldl"><span class="type-signature"></span>foldl<span class="signature">()</span><span class="type-signature"></span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Performs a left fold on an array: traverses a list from left to right and performs a function on each element until left with a single value. We start with an initial value, the accumulator (acc), and each operation will result in a new accumulator.
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="foldl.js.html">foldl.js</a>, <a href="foldl.js.html#line26">line 26</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    The single result of the fold.
+</div>
+
+
+
+        
+
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>function mult(a, b) {
+  return a * b;
+}
+
+var arr = [2, 3, 4];
+foldl(mult, 2, arr);
+// returns 48</code></pre>
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        <h4 class="name" id="foldl1"><span class="type-signature"></span>foldl1<span class="signature">()</span><span class="type-signature"></span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Performs a left fold on an array: traverses a list from left to right and performs a function on each element until left with a single value. Unlike foldl, this does not require an accumulator value; the initial accumlator value will be the first element in the list.
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="foldl1.js.html">foldl1.js</a>, <a href="foldl1.js.html#line25">line 25</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    The single result of the fold.
+</div>
+
+
+
+        
+
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>function mult(a, b) {
+  return a * b;
+}
+
+var arr = [2, 3, 4];
+foldl1(mult, arr);
+// returns 24</code></pre>
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        <h4 class="name" id="foldr"><span class="type-signature"></span>foldr<span class="signature">()</span><span class="type-signature"></span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Performs a right fold on an array: traverses a list from right to left and performs a function on each element until left with a single value. We start with an initial value, the accumulator (acc), and each operation will result in a new accumulator.
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="foldr.js.html">foldr.js</a>, <a href="foldr.js.html#line26">line 26</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    The single result of the fold.
+</div>
+
+
+
+        
+
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>function mult(a, b) {
+  return a * b;
+}
+
+var arr = [2, 3, 4];
+foldr(mult, 2, arr);
+// returns 48</code></pre>
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        <h4 class="name" id="foldr1"><span class="type-signature"></span>foldr1<span class="signature">()</span><span class="type-signature"></span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Performs a right fold on an array: traverses a list from right to left and performs a function on each element until left with a single value. Unlike foldr, this does not require an accumulator value; the initial accumlator value will be the final element in the list.
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="foldr1.js.html">foldr1.js</a>, <a href="foldr1.js.html#line25">line 25</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    The single result of the fold.
+</div>
+
+
+
+        
+
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>function mult(a, b) {
+  return a * b;
+}
+
+var arr = [2, 3, 4];
+foldr1(mult, arr);
+// returns 24</code></pre>
+
+    
+</dd>
+
+        
+            
+<dt>
+    
         <h4 class="name" id="fst"><span class="type-signature"></span>fst<span class="signature">(pair)</span><span class="type-signature"> &rarr; {element}</span></h4>
 
         
@@ -11768,6 +12180,127 @@ zip(obj);
     
 </dd>
 
+        
+            
+<dt>
+    
+        <h4 class="name" id="zipWith"><span class="type-signature"></span>zipWith<span class="signature">()</span><span class="type-signature"> &rarr; {array}</span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Joins (zips) two lists together while applying a given function between the corresponding elements.
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="zipWith.js.html">zipWith.js</a>, <a href="zipWith.js.html#line36">line 36</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    Returns an array made up from the two given lists after having the given function applied.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">array</span>
+
+
+    </dd>
+</dl>
+
+        
+
+    
+        <h5>Examples</h5>
+        
+    <pre class="prettyprint"><code>function add(a, b) {
+  return a + b;
+}
+
+var l1 = [1, 2, 3];
+var l2 = [2, 3, 4];
+
+zipWith(add, l1, l2);
+// returns [3, 5, 7];</code></pre>
+
+    <pre class="prettyprint"><code>var zipWithAdd = zipWith(add);
+zipWithAdd(l1, l2);
+// returns [3, 5, 7];</code></pre>
+
+    
+</dd>
+
         </dl>
     
 
@@ -11784,13 +12317,13 @@ zip(obj);
 </div>
 
 <nav>
-    <h2><a href="index.html">Index</a></h2><h3>Global</h3><ul><li><a href="global.html#add">add</a></li><li><a href="global.html#allAs">allAs</a></li><li><a href="global.html#compact">compact</a></li><li><a href="global.html#compare">compare</a></li><li><a href="global.html#compose">compose</a></li><li><a href="global.html#concat">concat</a></li><li><a href="global.html#copy">copy</a></li><li><a href="global.html#count">count</a></li><li><a href="global.html#curry">curry</a></li><li><a href="global.html#curryN">curryN</a></li><li><a href="global.html#detect">detect</a></li><li><a href="global.html#div">div</a></li><li><a href="global.html#divmod">divmod</a></li><li><a href="global.html#drop">drop</a></li><li><a href="global.html#filter">filter</a></li><li><a href="global.html#find">find</a></li><li><a href="global.html#first">first</a></li><li><a href="global.html#flatMap">flatMap</a></li><li><a href="global.html#flatten">flatten</a></li><li><a href="global.html#flip">flip</a></li><li><a href="global.html#fst">fst</a></li><li><a href="global.html#get">get</a></li><li><a href="global.html#groupBy">groupBy</a></li><li><a href="global.html#indexOf">indexOf</a></li><li><a href="global.html#inject">inject</a></li><li><a href="global.html#intersect">intersect</a></li><li><a href="global.html#invert">invert</a></li><li><a href="global.html#isArray">isArray</a></li><li><a href="global.html#isBoolean">isBoolean</a></li><li><a href="global.html#isEven">isEven</a></li><li><a href="global.html#isFunction">isFunction</a></li><li><a href="global.html#isNumber">isNumber</a></li><li><a href="global.html#isObject">isObject</a></li><li><a href="global.html#isOdd">isOdd</a></li><li><a href="global.html#isString">isString</a></li><li><a href="global.html#keys">keys</a></li><li><a href="global.html#last">last</a></li><li><a href="global.html#len">len</a></li><li><a href="global.html#map">map</a></li><li><a href="global.html#max">max</a></li><li><a href="global.html#memoize">memoize</a></li><li><a href="global.html#min">min</a></li><li><a href="global.html#mod">mod</a></li><li><a href="global.html#mult">mult</a></li><li><a href="global.html#nth">nth</a></li><li><a href="global.html#once">once</a></li><li><a href="global.html#partition">partition</a></li><li><a href="global.html#path">path</a></li><li><a href="global.html#pick">pick</a></li><li><a href="global.html#project">project</a></li><li><a href="global.html#range">range</a></li><li><a href="global.html#reduce">reduce</a></li><li><a href="global.html#reject">reject</a></li><li><a href="global.html#reverse">reverse</a></li><li><a href="global.html#slice">slice</a></li><li><a href="global.html#snd">snd</a></li><li><a href="global.html#split">split</a></li><li><a href="global.html#sqrt">sqrt</a></li><li><a href="global.html#square">square</a></li><li><a href="global.html#strip">strip</a></li><li><a href="global.html#subtract">subtract</a></li><li><a href="global.html#take">take</a></li><li><a href="global.html#tap">tap</a></li><li><a href="global.html#transpose">transpose</a></li><li><a href="global.html#union">union</a></li><li><a href="global.html#uniq">uniq</a></li><li><a href="global.html#zip">zip</a></li></ul>
+    <h2><a href="index.html">Index</a></h2><h3>Global</h3><ul><li><a href="global.html#add">add</a></li><li><a href="global.html#allAs">allAs</a></li><li><a href="global.html#compact">compact</a></li><li><a href="global.html#compare">compare</a></li><li><a href="global.html#compose">compose</a></li><li><a href="global.html#concat">concat</a></li><li><a href="global.html#copy">copy</a></li><li><a href="global.html#count">count</a></li><li><a href="global.html#curry">curry</a></li><li><a href="global.html#curryN">curryN</a></li><li><a href="global.html#detect">detect</a></li><li><a href="global.html#div">div</a></li><li><a href="global.html#divmod">divmod</a></li><li><a href="global.html#drop">drop</a></li><li><a href="global.html#filter">filter</a></li><li><a href="global.html#find">find</a></li><li><a href="global.html#first">first</a></li><li><a href="global.html#flatMap">flatMap</a></li><li><a href="global.html#flatten">flatten</a></li><li><a href="global.html#flip">flip</a></li><li><a href="global.html#foldl">foldl</a></li><li><a href="global.html#foldl1">foldl1</a></li><li><a href="global.html#foldr">foldr</a></li><li><a href="global.html#foldr1">foldr1</a></li><li><a href="global.html#fst">fst</a></li><li><a href="global.html#get">get</a></li><li><a href="global.html#groupBy">groupBy</a></li><li><a href="global.html#indexOf">indexOf</a></li><li><a href="global.html#inject">inject</a></li><li><a href="global.html#intersect">intersect</a></li><li><a href="global.html#invert">invert</a></li><li><a href="global.html#isArray">isArray</a></li><li><a href="global.html#isBoolean">isBoolean</a></li><li><a href="global.html#isEven">isEven</a></li><li><a href="global.html#isFunction">isFunction</a></li><li><a href="global.html#isNumber">isNumber</a></li><li><a href="global.html#isObject">isObject</a></li><li><a href="global.html#isOdd">isOdd</a></li><li><a href="global.html#isString">isString</a></li><li><a href="global.html#keys">keys</a></li><li><a href="global.html#last">last</a></li><li><a href="global.html#len">len</a></li><li><a href="global.html#map">map</a></li><li><a href="global.html#max">max</a></li><li><a href="global.html#memoize">memoize</a></li><li><a href="global.html#min">min</a></li><li><a href="global.html#mod">mod</a></li><li><a href="global.html#mult">mult</a></li><li><a href="global.html#nth">nth</a></li><li><a href="global.html#once">once</a></li><li><a href="global.html#partition">partition</a></li><li><a href="global.html#path">path</a></li><li><a href="global.html#pick">pick</a></li><li><a href="global.html#project">project</a></li><li><a href="global.html#range">range</a></li><li><a href="global.html#reduce">reduce</a></li><li><a href="global.html#reject">reject</a></li><li><a href="global.html#reverse">reverse</a></li><li><a href="global.html#slice">slice</a></li><li><a href="global.html#snd">snd</a></li><li><a href="global.html#split">split</a></li><li><a href="global.html#sqrt">sqrt</a></li><li><a href="global.html#square">square</a></li><li><a href="global.html#strip">strip</a></li><li><a href="global.html#subtract">subtract</a></li><li><a href="global.html#take">take</a></li><li><a href="global.html#tap">tap</a></li><li><a href="global.html#transpose">transpose</a></li><li><a href="global.html#union">union</a></li><li><a href="global.html#uniq">uniq</a></li><li><a href="global.html#zip">zip</a></li><li><a href="global.html#zipWith">zipWith</a></li></ul>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha10</a> on Thu Dec 25 2014 23:49:14 GMT-0800 (PST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha10</a> on Sun Dec 28 2014 18:55:53 GMT-0800 (PST)
 </footer>
 
 <script> prettyPrint(); </script>

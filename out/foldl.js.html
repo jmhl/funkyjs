@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: map.js</title>
+    <title>JSDoc: Source: foldl.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: map.js</h1>
+    <h1 class="page-title">Source: foldl.js</h1>
 
     
 
@@ -30,72 +30,33 @@
 
 'use strict';
 
-var curry      = require('./curry');
-var isArray    = require('./isArray');
-var isFunction = require('./isFunction');
-var isObject   = require('./isObject');
-
-module.exports = map;
+module.exports = foldl;
 
 /**
- * Iterates over an array or object, calls a given function on each item and then returns a new array or object with the results of each function call.
+ * Performs a left fold on an array: traverses a list from left to right and performs a function on each element until left with a single value. We start with an initial value, the accumulator (acc), and each operation will result in a new accumulator.
  *
- * This function can be curried.
+ * @params {function} fn The function to apply to each element.
+ * @params {element} acc The initial accumulator value.
+ * @params {array} arr The array to traverse.
  *
- * @param {function} fn The function to be called on each item.
- * @param {array/object} iterable The list to be mapped.
- *
- * @returns {array/object} The mapped list.
+ * @returns The single result of the fold.
  *
  * @example
- * function square(a) {
- *   return a * a;
+ * function mult(a, b) {
+ *   return a * b;
  * }
  *
- * var arr = [1, 2, 3];
- *
- * map(square, arr);
- *
- * // returns [1, 4, 9]
- * // Also note that arr === [1, 2, 3]
- *
- * @example
- * var obj = { 'one': 1, 'two': 2 };
- *
- * map(square, obj);
- * // returns { 'one': 1, 'two': 4 }
- * // Also note that obj === { 'one': 1, 'two': 2}
- *
- * @example
  * var arr = [2, 3, 4];
- * var mapSquares = map(square);
- *
- * mapSquares(arr);
- * // returns [4, 9, 16]
- * // Also note that arr === [2, 3, 4]
+ * foldl(mult, 2, arr);
+ * // returns 48
  */
 
-function map(fn, iterable) {
-  if (isArray(iterable)) {
-    var len = iterable.length;
-    var result = new Array(len);
+function foldl(fn, acc, arr) {
+  var len = arr.length;
+  var result = acc;
 
-    for (var i = 0; i &lt; len; i += 1) {
-      result[i] = fn(iterable[i]);
-    }
-  } else if (isObject(iterable)) {
-    var result = {};
-    var objKeys = Object.keys(iterable);
-    var len = objKeys.length;
-
-    for (var i = 0; i &lt; len; i += 1) {
-      var key = objKeys[i];
-      result[key] = fn(iterable[key]);
-    }
-  } else if (arguments.length === 1 &amp;&amp; isFunction(fn)) {
-    return curry(map)(fn);
-  } else {
-    throw new TypeError('Must be of type Array or Object');
+  for (var i = 0; i &lt; len; i += 1) {
+    result = fn(result, arr[i]);
   }
 
   return result;
