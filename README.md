@@ -4,6 +4,7 @@ Just trying to better understand functional programming in JavaScript.
 ### TODO
 + Laziness?
 + Maximum & Minimum for arrays
++ Add currying to fold funcs
 
 ### Resources
 + [http://scott.sauyet.com/Javascript/Talk/2014/01/FuncProgTalk]()
