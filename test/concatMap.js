@@ -10,11 +10,23 @@ describe('concatMap', function() {
     var arr = [1, 2, 3, 4, 5, 6];
 
     function test(x) {
-      return x % 2 ? [ x - 0.1, x, x + 0.1 ] : [];
+      return x % 2 ? [x - 0.1, x, x + 0.1] : [];
     }
 
     var result = [0.9, 1, 1.1, 2.9, 3, 3.1, 4.9, 5, 5.1];
 
     expect(concatMap(test, arr)).to.deep.equal(result);
+  });
+
+  it('should concat an array of strings into one string', function() {
+    var str = ['a', 'b', 'c'];
+
+    function test(x) {
+      return x + '!';
+    }
+
+    var result = 'a!b!c!';
+
+    expect(concatMap(test, str)).to.equal(result);
   });
 });
