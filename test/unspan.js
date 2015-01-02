@@ -22,9 +22,9 @@ describe('unspan', function() {
   });
 
   it('should return an empty array when one subarray has no matches', function() {
-    var arr1 = [2, 4, 6];
+    var arr1 = [1, 3, 5];
 
-    expect(unspan(isOdd, arr1)[1].length).to.equal(0);
+    expect(unspan(isOdd, arr1)[0].length).to.equal(0);
   });
 
   it('should return the appropriate length for each subarray', function() {
@@ -33,7 +33,7 @@ describe('unspan', function() {
   });
 
   it('should return the desired result', function() {
-    expect(spanned).to.deep.equal(result);
+    expect(unspanned).to.deep.equal(result);
   });
 
   it('should curry the function', function() {
