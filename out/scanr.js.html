@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: path.js</title>
+    <title>JSDoc: Source: scanr.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: path.js</h1>
+    <h1 class="page-title">Source: scanr.js</h1>
 
     
 
@@ -30,34 +30,49 @@
 
 'use strict';
 
-module.exports = path;
+var curryN     = require('./curryN');
+var isFunction = require('./isFunction');
+
+module.exports = scanr;
 
 /**
- * Returns the data specified from a path on an object that is separated by periods.
+ * Scans an array starting from the right - similar to the foldr function, except that it returns a list of all the accumulator values ending with the final accumulator (and starting with acc - the argument passed to the list).
  *
- * @params {string} path A period-separted path.
- * @params {object} object The object to traverse.
+ * @params {function} fn The function to perform on each element in the array.
+ * @params {element} acc The initial accumulator.
+ * @params {array} arr
  *
- * @returns The data at the end of the path.
+ * @returns {array} Returns an array of all the accumulator values.
  *
  * @example
- * var obj = {
- *   'one': {
- *     'two': 2
- *   }
- * };
+ * function add(a, b) {
+ *   return a + b;
+ * }
  *
- * path('one.two', obj);
- * // returns 2
+ * var arr = [3, 5, 2, 1];
+ *
+ * scanr(add, 0, arr);
+ * // returns [11, 8, 3, 1, 0];
+ *
+ * @example
+ * var scanAdd = scanr(add);
+ *
+ * scanAdd(0, arr);
+ * // returns [11, 8, 3, 1, 0];
  */
 
-function path(path, object) {
-  var keys = path.split('.');
-  var len = keys.length; 
-  var result = object;
+function scanr(fn, acc, arr) {
+  if (arguments.length === 1 &amp;&amp; isFunction(fn)) {
+    return curryN(3, scanr)(fn);
+  }
 
-  for (var i = 0; i &lt; len; i += 1) {
-    result = result[keys[i]]; 
+  var len = arr.length;
+  var result = new Array(len);
+  result[len] = acc;
+
+  for (var i = len - 1; i >= 0; i -= 1) {
+    acc = fn(acc, arr[i]);
+    result[i] = acc;
   }
 
   return result;

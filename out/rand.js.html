@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: path.js</title>
+    <title>JSDoc: Source: rand.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: path.js</h1>
+    <h1 class="page-title">Source: rand.js</h1>
 
     
 
@@ -30,37 +30,32 @@
 
 'use strict';
 
-module.exports = path;
+module.exports = rand;
 
 /**
- * Returns the data specified from a path on an object that is separated by periods.
+ * Returns a random whole number.
  *
- * @params {string} path A period-separted path.
- * @params {object} object The object to traverse.
+ * @param {number} min The lower bound (this number is always inclusive).
+ * @param {number} max The upper bound. This number is exclusive, unless a third boolean argument is passed in as true (isInclusive).
+ * @param {boolean} isInclusive (optional) When this is true, the upper bound (max) is inclusive.
  *
- * @returns The data at the end of the path.
+ * @returns {number} Returns a random whole number.
  *
  * @example
- * var obj = {
- *   'one': {
- *     'two': 2
- *   }
- * };
+ * rand(0, 5);
+ * // returns a whole number between 0 and 4
  *
- * path('one.two', obj);
- * // returns 2
+ * @example
+ * rand(0, 5, true);
+ * // returns a whole number between 0 and 5
  */
 
-function path(path, object) {
-  var keys = path.split('.');
-  var len = keys.length; 
-  var result = object;
-
-  for (var i = 0; i &lt; len; i += 1) {
-    result = result[keys[i]]; 
+function rand(min, max, isInclusive) {
+  if (isInclusive) {
+    max += 1;
   }
 
-  return result;
+  return Math.floor(Math.random() * (max - min)) + min;
 }
 </code></pre>
         </article>

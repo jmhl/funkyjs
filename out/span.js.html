@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: path.js</title>
+    <title>JSDoc: Source: span.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: path.js</h1>
+    <h1 class="page-title">Source: span.js</h1>
 
     
 
@@ -30,34 +30,60 @@
 
 'use strict';
 
-module.exports = path;
+var curry      = require('./curry');
+var isFunction = require('./isFunction');
+
+module.exports = span;
 
 /**
- * Returns the data specified from a path on an object that is separated by periods.
+ * Takes an array and then returns an array with two subarrays - the first subarray contains the elements until the predicate fails, the second contains the remaining elements.
  *
- * @params {string} path A period-separted path.
- * @params {object} object The object to traverse.
+ * This function can be curried.
  *
- * @returns The data at the end of the path.
+ * @params {function} predicate The predicate function to match against.
+ * @params {array} arr
+ *
+ * @returns Returns an array of length 2.
  *
  * @example
- * var obj = {
- *   'one': {
- *     'two': 2
- *   }
- * };
+ * function isEven(num) {
+ *   return num % 2 === 0;
+ * }
  *
- * path('one.two', obj);
- * // returns 2
+ * var arr = [2, 4, 6, 1, 2, 3];
+ * 
+ * span(isEven, arr);
+ * // returns [[2, 4, 6], [1, 2, 3]]
+ *
+ * @example
+ * var spanEvens = span(isEven);
+ *
+ * spanEvens(arr);
+ * // returns [[2, 4, 6], [1, 2, 3]]
  */
 
-function path(path, object) {
-  var keys = path.split('.');
-  var len = keys.length; 
-  var result = object;
+function span(predicate, arr) {
+  if (arguments.length === 1 &amp;&amp; isFunction(predicate)) {
+    return curry(span)(predicate);
+  }
+
+  var result = new Array([], []);
+  var len = arr.length;
+  var satisfied = true;
 
   for (var i = 0; i &lt; len; i += 1) {
-    result = result[keys[i]]; 
+    var item = arr[i];
+
+    if (satisfied) {
+      if (predicate(item)) {
+        result[0].push(item);
+      } else {
+        satisfied = false;
+        result[1].push(item);
+      }
+    } else {
+      result[1].push(item);
+    }
   }
 
   return result;

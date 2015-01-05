@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: path.js</title>
+    <title>JSDoc: Source: concatMap.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: path.js</h1>
+    <h1 class="page-title">Source: concatMap.js</h1>
 
     
 
@@ -30,34 +30,51 @@
 
 'use strict';
 
-module.exports = path;
+var isArray = require('./isArray');
+
+module.exports = concatMap;
 
 /**
- * Returns the data specified from a path on an object that is separated by periods.
+ * Short to using both map and concat; maps an array and then concatenates the result.
  *
- * @params {string} path A period-separted path.
- * @params {object} object The object to traverse.
+ * @params {function} fn The function that will be applied to each element in the array.
+ * @params {array} arr The array to map.
  *
- * @returns The data at the end of the path.
+ * @returns Will return either an array or a string - depending on the result of the function (fn).
  *
  * @example
- * var obj = {
- *   'one': {
- *     'two': 2
- *   }
- * };
+ * function nest(x) {
+ *   return [x];
+ * }
  *
- * path('one.two', obj);
- * // returns 2
+ * var arr = [1, 2, 3];
+ *
+ * concatMap(nest, arr);
+ * // returns [1, 2, 3]
+ *
+ * @example
+ * function addBang(x) {
+ *   return x + '!';
+ * }
+ *
+ * var arr = ['a', 'b', 'c'];
+ *
+ * concatMap(addBang, arr);
+ * // returns 'a!b!c!'
  */
 
-function path(path, object) {
-  var keys = path.split('.');
-  var len = keys.length; 
-  var result = object;
+function concatMap(fn, arr) {
+  var result = [];
+  var len = arr.length;
 
   for (var i = 0; i &lt; len; i += 1) {
-    result = result[keys[i]]; 
+    var x = fn(arr[i]);
+
+    if (isArray(x)) {
+      result = result.concat(x);
+    } else {
+      result += x;
+    }
   }
 
   return result;
