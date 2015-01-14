@@ -18,6 +18,10 @@ describe('range', function() {
     expect(function() {
       range('1', '10')
     }).to.throw(TypeError);
+
+    expect(function() {
+      range(1, 10, '10')
+    }).to.throw(TypeError);
   });
 
   it('should return a list of numbers (inclusive) from low to high', function() {

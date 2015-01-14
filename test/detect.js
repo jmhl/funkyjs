@@ -6,6 +6,12 @@ var funky  = require('../funky');
 var detect = funky.detect; 
 
 describe('detect', function() {
+  it('should throw an error when not given an array', function() {
+    expect(function() {
+      detect(isEven, {});
+    }).to.throw(TypeError);
+  });
+
   it('will detect and return the first even item', function() {
     var list = [1, 3, 5, 6, 7, 8, 9];
 
