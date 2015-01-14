@@ -14,5 +14,9 @@
     "gulp": "^3.8.10",
     "gulp-bench": "^1.1.0",
     "mocha": "^2.0.1"
+  },
+  "dependencies": {
+    "coveralls": "^2.11.2",
+    "mocha-lcov-reporter": "0.0.1"
   }
 }
