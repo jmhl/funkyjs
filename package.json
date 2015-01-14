@@ -3,6 +3,10 @@
   "version": "0.0.0",
   "description": "n/a",
   "main": "funky.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jmhl/funkyjs"
+  },
   "scripts": {
     "test": "mocha"
   },
