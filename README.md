@@ -1,9 +1,13 @@
 # Funky
 Just trying to better understand functional programming in JavaScript.
 
+[![Build Status](https://travis-ci.org/jmhl/funkyjs.svg)](https://travis-ci.org/jmhl/funkyjs)
+[![Coverage Status](https://img.shields.io/coveralls/jmhl/funkyjs.svg)](https://coveralls.io/r/jmhl/funkyjs)
+
 ### TODO
 + Laziness?
 + Maximum & Minimum for arrays
++ Capitalize, upcase, downcase; more string functions
 
 ### Resources
 + [http://scott.sauyet.com/Javascript/Talk/2014/01/FuncProgTalk]()
