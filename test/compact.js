@@ -6,20 +6,20 @@ var funky   = require('../funky');
 var compact = funky.compact;
 
 describe('compact', function() {
-  it('throws an error if passed anything other than an array or object', function() {
+  it('should throw an error if passed anything other than an array or object', function() {
     expect(function() {
       compact('');
     }).to.throw(TypeError);
   });
 
-  it('removes falsy values from an array', function() {
+  it('should remove falsy values from an array', function() {
     var arr = [0, 1, 2, 3, '', null, undefined, NaN, 'a', 'b'];
     var result = [1, 2, 3, 'a', 'b'];
 
     expect(compact(arr)).to.deep.equal(result);
   });
 
-  it('removes falsy values from an object', function() {
+  it('should remove falsy values from an object', function() {
     var obj = {
       'one': 1,
       'two': 2,
@@ -43,7 +43,7 @@ describe('compact', function() {
     expect(compact(obj)).to.deep.equal(result);
   });
 
-  it('removes falsy values from an array in place', function() {
+  it('should remove falsy values from an array in place', function() {
     var arr = [0, 1, 2, 3, '', null, undefined, NaN, 'a', 'b'];
     var result = [1, 2, 3, 'a', 'b'];
 
@@ -51,7 +51,7 @@ describe('compact', function() {
     expect(compact(arr, true)).to.deep.equal(arr);
   });
 
-  it('removes falsy values from an object in place', function() {
+  it('should remove falsy values from an object in place', function() {
     var obj = {
       'one': 1,
       'two': 2,

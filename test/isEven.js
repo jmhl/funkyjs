@@ -7,10 +7,10 @@ var isEven = funky.isEven;
 
 describe('isEven', function() {
   it('should return true when the number is odd', function() {
-    expect(isEven(6)).to.be.true;
+    expect(isEven(6)).to.be.true();
   });
 
   it('should return false when the number is even', function() {
-    expect(isEven(5)).to.be.false;
+    expect(isEven(5)).to.be.false();
   });
 });

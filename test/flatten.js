@@ -12,14 +12,14 @@ describe('flatten', function() {
     }).to.throw(TypeError);
   });
 
-  it('flattens a multidimensional array', function() {
+  it('should flatten a multidimensional array', function() {
     var arr = [1, 2, [3, 4], 5, [6, 7, 8]];
     var result = [1, 2, 3, 4, 5, 6, 7, 8];
 
     expect(flatten(arr)).to.deep.equal(result);
   });
 
-  it('flattens a nested multidimensional array', function() {
+  it('should flatten a nested multidimensional array', function() {
     var arr = [1, 2, [3, 4], 5, [6, [7, 8]]];
     var result = [1, 2, 3, 4, 5, 6, 7, 8];
 

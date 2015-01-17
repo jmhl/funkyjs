@@ -10,13 +10,13 @@ describe('allAs', function() {
   it('should return true when all predicates are satisfied', function() {
     var result = allAs([isEven, isLarge], 14);
 
-    expect(result).to.be.true;
+    expect(result).to.be.true();
   });
 
   it('should return false when even one predicate is not satisfied', function() {
     var result = allAs([isEven, isLarge], 8);
 
-    expect(result).to.be.false;
+    expect(result).to.be.false();
   });
 
   it('should curry the function', function() {
@@ -24,8 +24,8 @@ describe('allAs', function() {
     var result1 = isEvenAndIsLarge(18);
     var result2 = isEvenAndIsLarge(5);
 
-    expect(result1).to.be.true; 
-    expect(result2).to.be.false;
+    expect(result1).to.be.true();
+    expect(result2).to.be.false();
   });
 });
 

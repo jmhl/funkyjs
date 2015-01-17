@@ -6,18 +6,18 @@ var funky  = require('../funky');
 var get    = funky.get;
 
 describe('get', function() {
-  it('throws an error if not passed an object', function() {
+  it('should throw an error if not passed an object', function() {
     expect(function() {
       get([], 'one');
     }).to.throw(TypeError);
   });
 
-  it('gets the correct attribute', function() {
+  it('should get the correct attribute', function() {
     var obj = { 'one': 1, 'two': 2 };
     expect(get(obj, 'two')).to.equal(2);
   });
 
-  it('curries the function if not given a property name', function() {
+  it('should curry the function if not given a property name', function() {
     var obj = { 'one': 1, 'two': 2 };
     var getObj = get(obj);
 

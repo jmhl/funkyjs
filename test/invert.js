@@ -6,7 +6,7 @@ var funky  = require('../funky');
 var invert = funky.invert;
 
 describe('invert', function() {
-  it('throws an error if called on an incompatible type', function() {
+  it('should throw an error if called on an incompatible type', function() {
     expect(function() {
       invert([]);
     }).to.throw(TypeError);

@@ -7,7 +7,7 @@ var partition = funky.partition;
 var isEven    = funky.isEven;
 
 describe('partition', function() {
-  it('throws an error if called on an incompatible type', function() {
+  it('should throw an error if called on an incompatible type', function() {
     expect(function() {
       partition(isEven, {});
     }).to.throw(TypeError);

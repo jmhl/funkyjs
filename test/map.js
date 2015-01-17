@@ -7,7 +7,7 @@ var map    = funky.map;
 var square = funky.square;
 
 describe('map', function() {
-  it('throws an error if called on an incompatible type', function() {
+  it('should throw an error if called on an incompatible type', function() {
     var str = 'string';
 
     expect(function() {
@@ -23,7 +23,7 @@ describe('map', function() {
     expect(mapped).to.deep.equal([2, 3, 4]);
   });
 
-  it('points to a different place in memory', function() {
+  it('should point to a different place in memory', function() {
     var arr = [1, 2, 3];
     var cb = function(x) { return x + 1; };
     var mapped = map(cb, arr);

@@ -6,20 +6,20 @@ var funky  = require('../funky');
 var drop   = funky.drop; 
 
 describe('drop', function() {
-  it('throws an error when not used with an array', function() {
+  it('should throw an error when not used with an array', function() {
     expect(function() {
       drop(2, {});
     }).to.throw(TypeError);
   });
 
-  it('drops the first n elements from an array', function() {
+  it('should drop the first n elements from an array', function() {
     var arr = [1, 2, 3, 4, 5, 6];
     var result = [3, 4, 5, 6];
 
     expect(drop(2, arr)).to.deep.equal(result);
   });
 
-  it('curries the function when only given a number', function() {
+  it('should curry the function when only given a number', function() {
     var arr = [1, 2, 3, 4, 5, 6];
     var result = [3, 4, 5, 6];
     var dropTwo = drop(2);

@@ -6,7 +6,7 @@ var funky  = require('../funky');
 var len    = funky.len;
 
 describe('len', function() {
-  it('throws an error if called on an incompatible type', function() {
+  it('should throw an error if called on an incompatible type', function() {
     expect(function() {
       len(12);
     }).to.throw(TypeError);
