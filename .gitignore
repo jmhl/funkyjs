@@ -1,4 +1,5 @@
-node_modules
-bench/report
 .DS_Store
+bench/report
+node_modules
 npm-debug.log
+opt/report

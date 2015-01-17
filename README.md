@@ -7,7 +7,6 @@ Just trying to better understand functional programming in JavaScript.
 ### TODO
 + Laziness?
 + Maximum & Minimum for arrays
-+ Capitalize, upcase, downcase; more string functions
 
 ### Resources
 + [http://scott.sauyet.com/Javascript/Talk/2014/01/FuncProgTalk]()
