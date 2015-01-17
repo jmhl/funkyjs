@@ -1,3 +1,4 @@
 node_modules
 bench/report
 .DS_Store
+npm-debug.log
