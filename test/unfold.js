@@ -23,7 +23,6 @@ describe('unfold', function() {
 
   it('should curry the function', function() {
     var unfoldBySubtractingOne = unfold(minusOne, 0);
-    console.log(unfoldBySubtractingOne);
 
     expect(unfoldBySubtractingOne(10)).to.deep.equal(result);
   });

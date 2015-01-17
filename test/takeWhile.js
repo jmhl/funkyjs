@@ -5,6 +5,7 @@ var expect    = chai.expect;
 var funky     = require('../funky');
 var takeWhile = funky.takeWhile;
 var isEven    = funky.isEven;
+var isNumber  = funky.isNumber;
 
 describe('takeWhile', function() {
   var arr;
@@ -19,6 +20,10 @@ describe('takeWhile', function() {
     expect(function() {
       takeWhile(arr);
     }).to.throw(TypeError);
+  });
+
+  it('should the full array if every element satisfies the predicate function', function() {
+    expect(takeWhile(isNumber, arr)).to.deep.equal(arr);
   });
 
   it('should take the elements in the array until the predicate function fails', function() {
