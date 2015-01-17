@@ -2,6 +2,7 @@
 
 var funky   = require('../funky');
 var compact = funky.compact; 
+var lodash  = require('lodash');
 
 var arr = [0, 1, 2, 3, '', null, undefined, NaN, 'a', 'b'];
 var obj = {
@@ -45,6 +46,13 @@ module.exports = {
       maxTime: 2,
       fn: function() {
         compact(obj, true);
+      }
+    },
+    {
+      name: 'LODASH COMPACT',
+      maxTime: 2,
+      fn: function() {
+        lodash.compact(arr);
       }
     }
   ]
